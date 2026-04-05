@@ -9,31 +9,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const teaser = document.getElementById("jm-popup-teaser");
   const teaserBtn = teaser ? teaser.querySelector(".jm-popup-teaser__btn") : null;
 
+  const step1 = document.getElementById("jm-popupStep1");
+  const step2 = document.getElementById("jm-popupStep2");
+  const yesBtn = document.getElementById("jm-popupYes");
+  const noBtn = document.getElementById("jm-popupNo");
+
   const form = document.getElementById("jm-popupForm");
   const success = document.getElementById("jm-popupSuccess");
+  const afterSuccessBtn = document.getElementById("jm-popupAfterSuccess");
   const overlay = popup.querySelector(".jm-popup__overlay");
-  const closeBtns = popup.querySelectorAll(".jm-popup__close, #jm-popupAfterSuccess");
+  const closeBtn = popup.querySelector(".jm-popup__close");
 
   const registeredKey = "jmPopupRegistered";
-  const shownKey = "jmPopupAutoShown";
 
   const isHomeOnly = popup.dataset.homeOnly === "true";
   const isHome = popup.dataset.isHome === "true";
+  const isSuccess = popup.dataset.success === "true";
 
   function isRegistered() {
     return localStorage.getItem(registeredKey) === "true";
   }
 
-  function hasAutoShown() {
-    return localStorage.getItem(shownKey) === "true";
-  }
-
-  function markAutoShown() {
-    localStorage.setItem(shownKey, "true");
+  function markRegistered() {
+    localStorage.setItem(registeredKey, "true");
   }
 
   function openPopup() {
-    if (isRegistered()) return;
+    if (isRegistered() && !isSuccess) return;
     popup.classList.add("is-active");
     popup.setAttribute("aria-hidden", "false");
   }
@@ -53,26 +55,90 @@ document.addEventListener("DOMContentLoaded", function () {
     teaser.classList.remove("is-active");
   }
 
-  // 登録済みなら何も出さない
+  function showStep1() {
+    if (step1) {
+      step1.style.display = "block";
+      step1.classList.add("is-active");
+    }
+    if (step2) {
+      step2.style.display = "none";
+      step2.classList.remove("is-active");
+    }
+    if (form) {
+      form.style.display = "none";
+    }
+    if (success) {
+      success.style.display = "none";
+    }
+  }
+
+  function showStep2() {
+    if (step1) {
+      step1.style.display = "none";
+      step1.classList.remove("is-active");
+    }
+    if (step2) {
+      step2.style.display = "block";
+      step2.classList.add("is-active");
+    }
+    if (form) {
+      form.style.display = "flex";
+    }
+    if (success) {
+      success.style.display = "none";
+    }
+  }
+
+  function showSuccessView() {
+    if (step1) {
+      step1.style.display = "none";
+      step1.classList.remove("is-active");
+    }
+    if (step2) {
+      step2.style.display = "block";
+      step2.classList.add("is-active");
+    }
+    if (form) {
+      form.style.display = "none";
+    }
+    if (success) {
+      success.style.display = "block";
+    }
+  }
+
+  function resetPopupView() {
+    showStep1();
+  }
+
+  // 成功時だけ登録済みにする
+  if (isSuccess) {
+    markRegistered();
+    hideTeaser();
+    openPopup();
+    showSuccessView();
+    return;
+  }
+
+  // すでに登録済みなら何も出さない
   if (isRegistered()) {
     closePopup();
     hideTeaser();
     return;
   }
 
-  // 未登録なら teaser は全ページで表示
+  // 未登録なら teaser は表示
   showTeaser();
 
-  // popup自動表示はトップページのみ
+  // popup自動表示
   const allowAutoOpen = !isHomeOnly || isHome;
 
-  if (allowAutoOpen && !hasAutoShown()) {
+  if (allowAutoOpen) {
     const delay = parseInt(popup.dataset.delay || 2, 10) * 1000;
 
     setTimeout(function () {
       if (!isRegistered()) {
+        resetPopupView();
         openPopup();
-        markAutoShown();
       }
     }, delay);
   }
@@ -80,45 +146,48 @@ document.addEventListener("DOMContentLoaded", function () {
   // teaserクリックで popup 表示
   if (teaserBtn) {
     teaserBtn.addEventListener("click", function () {
+      resetPopupView();
       openPopup();
     });
   }
 
-  // 閉じる
-  closeBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      closePopup();
-
-      if (success) {
-        success.style.display = "none";
-      }
-
-      if (form) {
-        form.style.display = "flex";
-      }
+  // YesでSTEP2へ
+  if (yesBtn) {
+    yesBtn.addEventListener("click", function () {
+      showStep2();
     });
-  });
+  }
+
+  // Noで閉じる
+  if (noBtn) {
+    noBtn.addEventListener("click", function () {
+      closePopup();
+      resetPopupView();
+    });
+  }
+
+  // ×で閉じる
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      closePopup();
+      resetPopupView();
+    });
+  }
+
+  // 成功後の閉じる
+  if (afterSuccessBtn) {
+    afterSuccessBtn.addEventListener("click", function () {
+      closePopup();
+    });
+  }
 
   // overlayクリックで閉じる
   if (overlay) {
     overlay.addEventListener("click", function () {
       closePopup();
-
-      if (success) {
-        success.style.display = "none";
+      if (!isSuccess) {
+        resetPopupView();
       }
-
-      if (form) {
-        form.style.display = "flex";
-      }
-    });
-  }
-
-  // フォーム送信
-  if (form) {
-    form.addEventListener("submit", function () {
-      localStorage.setItem(registeredKey, "true");
-      hideTeaser();
     });
   }
 });
