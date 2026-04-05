@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "jm_sub_hero_4dCJUA": {
+      "type": "jm-sub-hero",
+      "name": "Sub Hero",
+      "settings": {
+        "img": "shopify://shop_images/IMG_2424.jpg",
+        "hero_height_pc": 80,
+        "hero_height_sp": 60,
+        "overlay_opacity": 40,
+        "ttl": "Built for Balance. Not Beauty.",
+        "txt": "Matcha was refined to protect the body’s rhythm—beauty is simply the result.\n美しさは結果である"
+      }
+    },
+    "jm_made_rwhwCR": {
+      "type": "jm-made",
+      "name": "産地紹介（Origin）",
+      "settings": {
+        "ttl": "Origin of MATCHA",
+        "subttl": "受け継がれてきたもの",
+        "text": "<p>matcha doesn’t grow just anywhere.it requires a rare balance —cool mountain air, clean water, morning fog,and land shaped by time rather than speed.<br/>japan offers more than ideal conditions.it offers continuity.<br/><br/>for generations, tea farmers have refined their craft through quiet repetition —shading the leaves to guide their character,waiting for the precise moment of harvest,and stone grinding slowly, with patience and restraint.<br/><br/>this is not mass production.it is cultivation.<br/>at matcha star japan, we preserve that origin —not as nostalgia, but as a living standard.</p><p><br/>every cup carries the character of its land,the precision of human hands,and the calm strength that defines japanese craftsmanship.<br/></p>",
+        "image": "shopify://shop_images/ridge.jpg"
+      }
+    },
+    "jm_science_bWwfiW": {
+      "type": "jm-science",
+      "blocks": {
+        "item_UteGYM": {
+          "type": "item",
+          "settings": {
+            "title": "Vitamins & Minerals",
+            "title_jp": "ビタミン·ミネラル",
+            "text": "Nutrients that support everyday cellular function."
+          }
+        },
+        "item_AWGEfq": {
+          "type": "item",
+          "settings": {
+            "title": "Polyphenols, Including Catechins",
+            "title_jp": "カテキン等のポリフェノール",
+            "text": "Naturally occurring antioxidants found in tea leaves."
+          }
+        },
+        "item_wqWzde": {
+          "type": "item",
+          "settings": {
+            "title": "L-Theanine",
+            "title_jp": "L-テアニン",
+            "text": "An amino acid known for supporting calm alertness."
+          }
+        },
+        "item_ptTdzn": {
+          "type": "item",
+          "settings": {
+            "title": "Caffeine (Naturally Present)",
+            "title_jp": "天然のカフェイン",
+            "text": "A measured lift—often perceived as smoother in matcha."
+          }
+        }
+      },
+      "block_order": [
+        "item_UteGYM",
+        "item_AWGEfq",
+        "item_wqWzde",
+        "item_ptTdzn"
+      ],
+      "name": "Science",
+      "settings": {
+        "heading": "Why MATCHA Works",
+        "subheading": "Support, not stimulation. Rhythm, not rush.",
+        "intro_bullet_1": "calm focus",
+        "intro_bullet_2": "clean energy",
+        "intro_bullet_3": "daily balance",
+        "note_text": "Note: Nutrient composition can vary by harvest, region, and processing, and matcha is not intended to diagnose, treat, cure, or prevent disease."
+      }
+    },
+    "jm_craft_dmBDr6": {
+      "type": "jm-craft",
+      "name": "Craft & Philosophy",
+      "settings": {
+        "heading": "Craft & Philosophy",
+        "sub_jp": "美しさは結果である",
+        "subheading": "our craft exists to protect what history told us —balance, restraint, and integrity.",
+        "image": "shopify://shop_images/craft.jpg",
+        "overlay_opacity": 20,
+        "point1_title": "Hand-picked leaves",
+        "point1_text": "We select and pick only the leaves suited for matcha, with careful grading at harvest.Philosophy: precision begins before processing — it begins in selection.",
+        "point2_title": "Shaded cultivation",
+        "point2_text": "Before harvest, the tea plants are shaded to reduce direct sunlight and guide the leaf’s balance.Philosophy: we protect the leaf first, so nothing needs to be forced later.",
+        "point3_title": "Stone-ground, slowly",
+        "point3_text": "Tencha is ground on stone mills at a controlled pace to preserve texture and character.Philosophy: speed is the easiest way to lose what matters.",
+        "point4_title": "Freshness controlled, released in small batches",
+        "point4_text": "We manage storage and release timing carefully, producing in smaller batches to protect freshness.Philosophy: quality is not only made — it is maintained."
+      }
+    },
+    "jm_mission_hgXwGx": {
+      "type": "jm-mission",
+      "blocks": {
+        "text_qKcey6": {
+          "type": "text",
+          "settings": {
+            "text": "we choose small-batch craft over scale, because matcha quality is defined by time, disciplined work, and freshness.we do not promise quick transformation — we offer a quieter, more deliberate ritual that supports balance, and allows beauty to emerge as a natural result.",
+            "style": "normal"
+          }
+        },
+        "text_RqTiKK": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "matcha was never created to make you beautiful.\nit was refined to keep the body balancedthrough time, pressure, and repetition.\nbeauty is simply what happenswhen balance is protected.",
+            "style": "emphasis"
+          }
+        }
+      },
+      "block_order": [
+        "text_qKcey6",
+        "text_RqTiKK"
+      ],
+      "name": "mission",
+      "settings": {
+        "heading": "Our Mission",
+        "subheading": "return to balance — beauty follows",
+        "image": "shopify://shop_images/IMG_2429.jpg"
+      }
+    },
+    "jm_history_QzNzqF": {
+      "type": "jm-history",
+      "blocks": {
+        "item_rt7wT3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/history-free.jpg",
+            "item_title": "Song Dynasty (960–1279) → Japan",
+            "title_jp": "断絶しなかった文化",
+            "text": "whisked powdered tea began in song china — and later disappeared there.in japan, it didn’t. the method was preserved, refined, and repeated,until japan became the only place where this tradition survived without interruption."
+          }
+        },
+        "item_FFTNKh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/history-2.png",
+            "item_title": "Late 12th Century · Kamakura Period",
+            "title_jp": "養生",
+            "text": "matcha arrived as a tool, not a treat.in the late 12th century,  brought tea seeds and preparation methods from song china.in kissa yōjōki, tea was described in terms of alertness, focus, and internal balance.early drinkers were monks and warriors — matcha was never meant to entertain."
+          }
+        },
+        "item_6FALPW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/history-3.png",
+            "item_title": "15th–16th Century · Japan",
+            "title_jp": "向き合うための器",
+            "text": "matcha was never poured — it is whisked in the bowl.that is why the bowl became the centre: a space for presence.when imported bowls became status symbols, sen no rikyu reversed the value —choosing quiet, imperfect bowls that carry the trace of the hand.earth softens heat and absorbs sound. glass reflects. metal asserts.only earth disappears."
+          }
+        }
+      },
+      "block_order": [
+        "item_rt7wT3",
+        "item_FFTNKh",
+        "item_6FALPW"
+      ],
+      "name": "Matcha History（抹茶の歴史）",
+      "settings": {
+        "heading": "The History of MATCHA",
+        "subheading": "Tradition refined by time."
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "jm_sub_hero_4dCJUA",
+    "jm_made_rwhwCR",
+    "jm_science_bWwfiW",
+    "jm_craft_dmBDr6",
+    "jm_mission_hgXwGx",
+    "jm_history_QzNzqF",
+    "main"
+  ]
+}

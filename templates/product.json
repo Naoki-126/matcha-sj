@@ -1,0 +1,172 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "subscriptions_app_block_YhR6P6": {
+          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+          "settings": {
+            "widget_style": "card",
+            "widget_style_card_selector": "radio_button",
+            "subscription_policy_url": "",
+            "color_text_body": "#6D7175",
+            "dividers_color": "#8F8D8D",
+            "background_color": "#FFFFFF",
+            "border_thickness": 1,
+            "border_radius": 0,
+            "product": "{{product}}"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "subscriptions_app_block_YhR6P6",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "jm_diagnosis_nFEb4t": {
+      "type": "jm-diagnosis",
+      "name": "Matcha Finder",
+      "settings": {
+        "intro_lead": "Not sure which matcha is right for you?",
+        "intro_text": "By answering a few simple questions,\nwe’ll guide you to the matcha that fits your taste and lifestyle.",
+        "q0_text": "What are you looking for today??",
+        "q0_a1": "Calm focus & balance",
+        "q0_a2": "Gentle beauty & steady",
+        "q1_text": "how do you usually enjoy matcha?",
+        "q1_a1": "i often mix it into lattes, smoothies, or recipes",
+        "q1_a2": "i mostly enjoy it straight, with hot water only",
+        "q1_a3": "Both (straight + lattes)",
+        "q2_text": "is organic certification your top priority when choosing ingredients?",
+        "q2_a1": "yes, it matters a lot to me",
+        "q2_a2": "i care more about overall quality and taste balance",
+        "q3_text": "when drinking matcha straight, do you value clarity, smoothness, and depth of umami?",
+        "q3_a1": "yes, i want a clean and refined taste",
+        "q3_a2": "i am comfortable with a more balanced, everyday profile",
+        "q4_text": "which kind of enjoyment feels closer to what you want from matcha?",
+        "q4_a1": "experiencing aroma and umami clearly when enjoyed straight",
+        "q4_a2": "having a balanced, reliable flavor that works beautifully in lattes and recipes",
+        "q5_text": "Which matters more right now?",
+        "q5_a1": "Stability & versatility (easy to keep)",
+        "q5_a2": "Light & easy (simple daily use)",
+        "q6_text": "What do you want more often?",
+        "q6_a1": "Daily balance (fits any moment)",
+        "q6_a2": "Occasional deep focus (pure, refined)",
+        "result_label": "Your matcha",
+        "result_cta": "View product",
+        "organic_title": "Organic Matcha",
+        "organic_text": "A clean and dependable organic matcha, perfect for daily recipes and mindful choices.",
+        "organic_link": "",
+        "premium_title": "Premium Ceremonial Matcha",
+        "premium_text": "A refined ceremonial matcha with clear aroma and deep umami, best enjoyed straight.",
+        "premium_link": "",
+        "ceremonial_title": "Ceremonial Matcha",
+        "ceremonial_text": "A balanced ceremonial matcha that performs beautifully both straight and in recipes.",
+        "ceremonial_link": ""
+      }
+    },
+    "176882368201545581": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "jm_diagnosis_nFEb4t",
+    "176882368201545581"
+  ]
+}

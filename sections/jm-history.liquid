@@ -1,0 +1,111 @@
+<section class="jm-history">
+  <div class="page-inner">
+    <div class="content-inner">
+
+      <div class="jm-history__ttlArea">
+        {% if section.settings.heading != blank %}
+          <h2 class="jm-section__title">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.settings.subheading != blank %}
+          <p class="jm-section__subtitle">
+            {{ section.settings.subheading }}
+          </p>
+        {% endif %}
+      </div>
+
+      <div class="jm-history__contentArea">
+        <div class="jm-history__content">
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'item' %}
+              <div class="jm-history__item" {{ block.shopify_attributes }}>
+
+                {% if block.settings.image != blank %}
+                  <div class="jm-history__imgArea">
+                    <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" class="jm-history__img">
+                  </div>
+                {% endif %}
+
+                <div class="jm-history__txtArea">
+                  {% if block.settings.item_title != blank %}
+                    <h3 class="jm-history__itemTitle">{{ block.settings.item_title }}</h3>
+                  {% endif %}
+                  {% if block.settings.title_jp != blank %}
+                    <p class="jm-history__jp">{{ block.settings.title_jp }}</p>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <p class="jm-history__text">{{ block.settings.text | newline_to_br }}</p>
+                  {% endif %}
+                </div>
+
+              </div>
+            {% endcase %}
+          {% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Matcha History",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Title",
+      "default": "THE HISTORY OF MATCHA"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Tradition refined by time."
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Image + Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Title",
+          "default": "Year / Event Name"
+        },
+        {
+          "type": "text",
+          "id": "title_jp",
+          "label": "Title(JP)",
+          "default": "断絶しなかった文化"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Matcha History",
+      "category": "About"
+    }
+  ]
+}
+{% endschema %}

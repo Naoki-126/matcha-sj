@@ -1,0 +1,99 @@
+{%- if section.settings.enable -%}
+<div
+  id="jm-popup"
+  class="jm-popup"
+  aria-hidden="true"
+  data-delay="{{ section.settings.delay | default: 2 }}"
+  data-home-only="{{ section.settings.home_only }}"
+  data-is-home="{% if request.page_type == 'index' %}true{% else %}false{% endif %}"
+>
+  <div class="jm-popup__overlay"></div>
+  <div class="jm-popup__content">
+    <button type="button" class="jm-popup__close" aria-label="閉じる">×</button>
+    <h2 class="jm-popup__title">{{ section.settings.title }}</h2>
+    <div class="jm-popup__text">{{ section.settings.text | newline_to_br }}</div>
+    <form
+      id="jm-popupForm"
+      class="jm-popup__btnArea"
+      method="post"
+      action="/contact#contact_form"
+      accept-charset="UTF-8"
+    >
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input
+        type="email"
+        name="contact[email]"
+        placeholder="example@mail.com"
+        class="jm-popup__form"
+        required
+      >
+      <button type="submit" class="jm-btn">
+        {{ section.settings.button_label }}
+      </button>
+    </form>
+    <div id="jm-popupSuccess" class="jm-popup__success" style="display:none;">
+      <p>登録ありがとうございます！</p>
+      <p>割引コード: <strong id="jm-discountCode">DISCOUNT10</strong></p>
+      <p>今すぐカートに適用してお買い物をお楽しみください！</p>
+      <button id="jm-popupAfterSuccess">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<div id="jm-popup-teaser" class="jm-popup-teaser">
+  <button type="button" class="jm-popup-teaser__btn" aria-label="Open email signup popup">
+    <span>Get 15% OFF</span>
+  </button>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Mail Popup",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "ポップアップを有効にする",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "home_only",
+      "label": "トップページのみ表示",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "表示までの遅延（秒）",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Want ◯% Off the World's Best Tasting Matcha"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Get ◯% Off Your First Order"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "ボタン文言",
+      "default": "登録して割引を受け取る"
+    }
+  ],
+  "presets": []
+}
+{% endschema %}

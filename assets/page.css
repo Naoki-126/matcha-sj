@@ -1,0 +1,890 @@
+@charset "UTF-8";
+
+/* ===========================
+# 下層ページ共通
+=========================== */
+
+/* sub-hero
+=========================== */
+.jm-subHero {
+  width: 100%;
+}
+
+.jm-subHero__contents {
+  position: relative;
+}
+
+.jm-subHero__imgArea {
+  width: 100%;
+  height: var(--hero-height-pc);
+}
+
+.jm-subHero__imgArea-content {
+  width: 100%;
+  height: 100%;
+}
+
+.jm-subHero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.jm-subHero__ttlArea {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.jm-subHero__imgArea::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--hero-overlay-opacity));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.jm-subHero__ttlArea-content {
+  max-width: 960px;
+  text-align: center;
+  color: #fff;
+}
+
+.jm-subHero__title {
+  font-size: clamp(28px, 4vw, 56px);
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+  font-family: var(--ff-en);
+  font-weight: 400;
+  color: #fff;
+}
+
+.jm-subHero__text {
+  font-size: 14px;
+  line-height: 1.9;
+  letter-spacing: .04em;
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-subHero__imgArea {
+    height: var(--hero-height-sp);
+  }
+
+  .jm-subHero__ttlArea {
+    padding: 60px 16px 40px;
+  }
+}
+
+/* ===========================
+# About ページ
+=========================== */
+
+/* jm-made
+=========================== */
+.jm-made {
+  margin: 0 auto;
+  width: 100%;
+  padding: 100px 0 80px;
+}
+
+.jm-made__contents {
+  margin: 0 auto;
+  max-width: var(--width-base);
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+
+.jm-made__contentArea {
+  width: 40%;
+}
+
+.jm-made__ttlArea {
+  text-align: left;
+}
+
+.jm-made__text {
+  margin-top: 32px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #333;
+  max-width: 520px;
+  letter-spacing: 0.02em;
+  word-break: break-word;
+}
+
+.jm-made__text p + p {
+  margin-top: 16px;
+}
+
+.jm-made__imgArea {
+  padding-top: 40px;
+  width: 60%;
+}
+
+.jm-made__image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.jm-made__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-made  {
+    padding: 80px 0 60px;
+  }
+
+  .jm-made__contents {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .jm-made__contentArea {
+    width: 100%;
+  }
+
+  .jm-made__imgArea {
+    width: 100%;
+  }
+
+  .jm-made__text {
+    font-size: 14px;
+    line-height: 1.85;
+    max-width: 100%;
+  }
+}
+
+/* jm-history
+=========================== */
+.jm-history {
+  margin: 0 auto;
+  width: 100%;
+  background: var(--bg-soft);
+  padding: 100px 0 80px;
+}
+
+.jm-history__ttlArea {
+  text-align: center;
+}
+
+.jm-history__contentArea {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--width-base);
+}
+
+.jm-history__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.jm-history__item {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.jm-history__imgArea {
+  margin-bottom: 16px;
+}
+
+.jm-history__imgArea {
+  margin: 0 auto;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.jm-history__img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.jm-history__txtArea {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.jm-history__itemTitle {
+  font-size: 20px;
+  text-align: center;
+}
+
+.jm-history__jp {
+  font-size: 14px;
+  text-align: center;
+}
+
+.jm-history__text {
+  margin-top: 16px;
+}
+
+@media screen and (max-width: 749px) {
+    .jm-history {
+    padding: 80px 0 60px;
+  }
+
+  .jm-history__content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .jm-history__text {
+    font-size: 14px;
+    line-height: 2;
+  }
+}
+
+/* jm-craft
+=========================== */
+.jm-craft {
+  margin: 100px auto 80px;
+  width: 100%;
+}
+
+.jm-craft__ttlArea {
+  text-align: center;
+}
+
+.jm-craft__inner {
+  width: 100%;
+  max-width: var(--width-base);
+  margin: 48px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+}
+
+.jm-craft__imgArea {
+  width: 50%;
+  overflow: hidden;
+}
+
+.jm-craft__image {
+  position: relative;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.jm-craft__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85);
+}
+
+.jm-craft__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.jm-craft__txtArea {
+  width: 50%;
+}
+
+.jm-craft__point {
+  margin-top: 24px;
+  /* margin-top: 0; */
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.jm-craft__ttl {
+  margin-top: 24px;
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-craft {
+    margin: 80px auto 60px;
+  }
+
+  .jm-craft__inner {
+    margin-top: 36px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .jm-craft__imgArea {
+    width: 100%;
+  }
+
+  .jm-craft__image img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .jm-craft__txtArea {
+    width: 100%;
+  }
+}
+
+/* jm-science
+=========================== */
+.jm-science {
+  margin: 0 auto;
+  width: 100%;
+  background: var(--bg-soft);
+  padding: 100px 0 80px;
+}
+
+.jm-science__ttlArea {
+  text-align: center;
+}
+
+.jm-science__headArea {
+  margin: 32px auto 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+}
+
+.jm-science__intro {
+  padding: 10px 18px;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--color-base-text);
+  white-space: nowrap;
+}
+
+.jm-science__intro::before {
+  content: "•";
+  margin-right: 6px;
+  opacity: 0.5;
+}
+
+.jm-science__inner {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--width-base);
+}
+
+.jm-science__cardArea {
+  margin: 40px auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* ←PCは4列 */
+  gap: 20px;
+  text-align: left;
+}
+
+.jm-science__card {
+  margin: 0;           
+  width: 100%;
+  max-width: none;
+  background: var(--bg-base);
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.jm-science__ttl {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.jm-science__jp {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.jm-science__text {
+  margin-top: 20px;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.jm-science__note {
+  margin: 28px auto 0;
+  width: 100%;
+  max-width: 720px;
+  padding: 16px 18px;
+}
+
+.jm-science__noteText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.72);
+}
+
+@media screen and (max-width: 749px) {
+  .jm-science {
+    padding: 80px 0 60px;
+  }
+
+  .jm-science__headArea {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .jm-science__intro {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .jm-science__cardArea {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .jm-science__card {
+    padding: 20px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+  }
+}
+
+/* jm-mission
+=========================== */
+.jm-mission {
+  margin: 100px auto 80px;
+  width: 100%;
+}
+
+.jm-mission__ttlArea {
+  text-align: center;
+}
+
+.jm-mission__inner {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--width-base);
+}
+
+.jm-mission__image {
+  margin: 36px auto 0;
+  margin-top: 36px;
+  position: relative;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.jm-mission__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.jm-mission__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.04),
+      rgba(0,0,0,0.12)
+    );
+  pointer-events: none;
+}
+
+.jm-mission__content {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  max-width: 720px;
+}
+
+.jm-mission__text {
+  margin-top: 56px;
+  font-weight:600;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-mission {
+    padding: 80px 0 60px;
+  }
+
+  .jm-mission__inner {
+    margin-top: 36px;
+  }
+
+  .jm-mission__image img {
+    aspect-ratio: 4 / 5;
+  }
+  .jm-mission__content {
+    margin-top: 40px;
+  }
+}
+
+/* ===========================
+# How to use
+=========================== */
+/* jm-use
+=========================== */
+.jm-use {
+  margin: 100px auto 80px;
+  width: 100%;
+}
+
+.jm-use__ttlArea {
+  text-align: center;
+}
+
+.jm-use__text {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.jm-use__inner {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--width-base);
+}
+
+.jm-use__contents {
+  margin: 48px auto 0;
+  width: 100%;
+  max-width: var(--width-base);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 60px);
+}
+
+.jm-use__content {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.jm-use__content.is-reverse {
+  flex-direction: row-reverse;
+}
+
+.jm-use__imgArea {
+  width: 50%;
+  overflow: hidden;
+}
+
+.jm-use__image {
+  position: relative;
+  max-width: 600px;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.jm-use__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.jm-use__txtArea {
+  width: 50%;
+}
+
+.jm-use__contTitle {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.jm-use__contText {
+  margin-top: 24px;
+  line-height: 1.7;
+}
+
+.jm-use__contText ol {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.jm-use__contText ol li {
+  margin-top: 12px;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-use {
+    margin: 80px auto 60px;
+  }
+
+  .jm-use__inner {
+    margin-top: 36px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .jm-use__content,
+  .jm-use__content.is-reverse {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .jm-use__imgArea,
+  .jm-use__txtArea {
+    width: 100%;
+  }
+
+  .jm-use__image {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* ===========================
+# faqページ
+=========================== */
+/* jm-faq
+=========================== */
+.page-faq {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--width-pc);
+}
+
+.jm-faq {
+  margin: 100px auto 80px;
+  width: 100%;
+}
+
+.jm-faq__ttlArea {
+  text-align: center;
+}
+
+.jm-faq__contents {
+  margin: 48px auto 0;
+  width: 100%;
+  max-width: 720px;
+}
+
+.jm-faq__content {
+  margin: 64px auto 0;
+}
+
+.jm-faq__title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-heading);
+  letter-spacing: 0.04em;
+  text-align: left;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.jm-faq__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 32px;
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+}
+
+.jm-faq__content:first-of-type {
+  margin-top: 0;
+}
+
+.jm-faq__accordionArea {
+  width: 100%;
+}
+
+.jm-accordion__q {
+  background: var(--bg-soft);
+  padding: 14px 24px 14px 56px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-base);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative;
+	cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.jm-accordion__q:first-of-type {
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.jm-accordion__q:hover {
+  background: var(--bg-base);
+}
+
+.jm-accordion__q::before {
+  content: "Q";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--color-heading);
+  opacity: 0.6;
+}
+
+.jm-accordion__q::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid var(--color-sub);
+  border-bottom: 1px solid var(--color-sub);
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.jm-accordion__a {
+	max-height: 0;
+	overflow: hidden;
+  background: var(--bg-base);
+  padding: 0px 24px 0px 56px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-sub);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  position: relative;
+}
+
+.jm-accordion__q.active + .jm-accordion__a {
+  padding: 16px 24px 24px 56px;
+}
+
+.jm-accordion__a::before {
+  content: "A";
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: 12px;
+  color: var(--color-main);
+  opacity: 0.4;
+}
+
+.jm-accordion__q.active::after {
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+@media screen and (max-width: 749px) {
+  .jm-faq {
+    padding: 80px 0 60px;
+  }
+
+  .jm-faq__content {
+    margin-top: 48px;
+  }
+}
+
+/* ===========================
+# contact
+=========================== */
+.jm-contact__note {
+  font-size: 10px;
+  color: var(--color-sub);
+  margin-bottom: 8px;
+}
+
+.jm-contact__btnArea {
+  text-align: center;
+}
+
+.jm-contact__button {
+  border-radius: 8px;
+  background-color: var(--color-accent);
+
+  &:hover {
+    background-color: var(--bg-sub);
+  }
+}
+
+/* =========================
+  Breadcrumbs
+========================= */
+.breadcrumbs-area {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px 8px;
+}
+
+.breadcrumb-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-page {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-muted, #8a8a8a);
+}
+
+/* 区切り */
+.breadcrumb-page + .breadcrumb-page::before {
+  content: "/";
+  margin: 0 6px;
+  color: var(--text-muted, #b0b0b0);
+}
+
+/* リンク */
+.breadcrumb-page a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.breadcrumb-page a:hover {
+  opacity: 0.7;
+}
+
+/* 現在ページ */
+.breadcrumb-page:last-child {
+  color: var(--text-main, #333);
+  font-weight: 400;
+  pointer-events: none;
+}
+
+/* ===========================
+# jm-page-head
+=========================== */
+.jm-pageHead {
+  margin: 100px auto 80px;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-pageHead {
+    margin: 80px auto 60px;
+  }
+}

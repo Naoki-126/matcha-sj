@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "jm_sub_hero_j49Ufx": {
+      "type": "jm-sub-hero",
+      "name": "Sub Hero",
+      "settings": {
+        "img": "shopify://shop_images/matcha_woman.jpg",
+        "hero_height_pc": 40,
+        "hero_height_sp": 30,
+        "overlay_opacity": 25,
+        "ttl": "FAQ",
+        "txt": "Questions, gently answered."
+      }
+    },
+    "jm_faq_DXjpVn": {
+      "type": "jm-faq",
+      "blocks": {
+        "faq_group_RYxBHj": {
+          "type": "faq_group",
+          "disabled": true,
+          "settings": {
+            "sub_title": "When to Drink (飲むタイミング)",
+            "question1": "When is the best time of day to drink matcha?",
+            "answer1": "Many people enjoy matcha in the morning or early afternoon, when a gentle sense of focus is welcome.",
+            "question2": "Is it okay to drink matcha on an empty stomach?",
+            "answer2": "Some find it comfortable, while others prefer to enjoy it after a light meal. Listening to your body is usually the best guide.",
+            "question3": "Can I drink matcha in the evening?",
+            "answer3": "Because matcha contains caffeine, some people choose to avoid it later in the day.",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": "",
+            "question6": "",
+            "answer6": ""
+          }
+        },
+        "faq_group_x7xA7B": {
+          "type": "faq_group",
+          "disabled": true,
+          "settings": {
+            "sub_title": "Caffeine Content (カフェイン量)",
+            "question1": "How much caffeine does matcha contain?",
+            "answer1": "Matcha naturally contains caffeine, though the amount can vary depending on the type and how it is prepared.",
+            "question2": "Is matcha stronger than coffee?",
+            "answer2": "Many people feel matcha provides a more gradual sense of alertness compared to coffee, rather than a sharp spike.",
+            "question3": "Will matcha make me feel jittery?",
+            "answer3": "Experiences differ. Some people find matcha feels smoother, while others remain sensitive to caffeine.",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": "",
+            "question6": "",
+            "answer6": ""
+          }
+        },
+        "faq_group_GCqGBb": {
+          "type": "faq_group",
+          "disabled": true,
+          "settings": {
+            "sub_title": "During Pregnancy (妊娠中の相談)",
+            "question1": "Is it safe to drink matcha during pregnancy?",
+            "answer1": "Caffeine intake during pregnancy is a personal and medical consideration. Many choose to enjoy matcha in moderation or consult a healthcare professional.",
+            "question2": "Does matcha contain more caffeine than green tea?",
+            "answer2": "Because matcha is made from powdered tea leaves, it can contain more caffeine than regular green tea, depending on preparation.",
+            "question3": "Are there alternatives to enjoy matcha flavor with less caffeine?",
+            "answer3": "Some people explore smaller servings or recipes that use less matcha powder.",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": "",
+            "question6": "",
+            "answer6": ""
+          }
+        },
+        "faq_group_B3UNkU": {
+          "type": "faq_group",
+          "disabled": true,
+          "settings": {
+            "sub_title": "International Shipping (海外配送)",
+            "question1": "Do you ship internationally?",
+            "answer1": "Yes, international shipping is available to many regions.",
+            "question2": "How long does international delivery take?",
+            "answer2": "Delivery times vary by destination and shipping method, and are typically provided at checkout.",
+            "question3": "Will I need to pay customs duties or taxes?",
+            "answer3": "Customs fees and import taxes depend on local regulations and are generally the responsibility of the recipient.",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": "",
+            "question6": "",
+            "answer6": ""
+          }
+        },
+        "faq_group_H3AD9J": {
+          "type": "faq_group",
+          "settings": {
+            "sub_title": "We don’t make more. we make it right.",
+            "question1": "Why do matcha prices vary?",
+            "answer1": "Matcha prices vary mainly because of how selective the leaf sourcing is, how much time and labour goes into cultivation, and how strictly quality is protected during processing. These differences show up in the cup — in umami and bitterness balance, aroma, colour brightness, and mouthfeel.\nFor higher-grade matcha, farmers use shading cultivation: for a set period before harvest, tea fields are covered to reduce direct sunlight. This is not a one-click industrial step. Across large areas, coverings (such as shading nets) must be installed, secured, and adjusted depending on weather and plant conditions — work that is repeated by hand. Shading supports a delicate balance in the leaf, but it also increases labour and typically reduces yield. That combination of effort and limitation is a major reason prices differ.",
+            "question2": "Why is it made in small batches?",
+            "answer2": "Matcha is sensitive to air, light, heat, and humidity. When it is exposed to air, oxidation progresses more quickly: aroma fades, colour loses its vibrancy, and taste can shift. In humid conditions, the powder can absorb moisture and clump, which also affects quality.\nTo keep matcha at its best, we produce and manage it in small batches, and avoid holding large volumes for long periods. We prioritise delivering matcha when it is in good condition rather than maximising output.",
+            "question3": "Why Japan?",
+            "answer3": "Matcha is not simply “green tea powder.” Leaves grown under shading are harvested and then steamed as quickly as possible to stop oxidation. They are dried without rolling to make tencha, the raw material for matcha. After drying, stems and veins are removed, and the tea is then slowly stone-ground into a fine powder.\nThis sequence is sensitive: flavour, colour, and mouthfeel can shift easily, and consistent quality depends on accumulated know-how and careful control at each step. Japan is where these cultivation and processing standards have been refined and continuously practiced, supported by a supply chain capable of maintaining this level of control.",
+            "question4": "How should I store matcha after opening?",
+            "answer4": "Because matcha is sensitive to air, light, heat, and humidity, we recommend minimising air exposure and storing it cool and protected from light.\nRecommended:\nAfter each use, press out excess air and reseal tightly\nKeep away from direct sunlight (store in the dark)\nStore at low temperature (refrigerator or freezer is recommended)\nIf storing cold, avoid condensation: handle only what you need quickly, reseal, and prevent moisture forming from temperature changes.",
+            "question5": "Why a zip pouch (and not a tin)?",
+            "answer5": "We use a zip pouch to reduce one of the main causes of quality loss: contact with air. Tins can appear closed, but in practice small gaps and repeated opening introduce air. As the tin empties, the air space inside increases, which can accelerate oxidation.\nA zip pouch is easier to reseal immediately after use and helps limit air entering the package, supporting freshness, colour, aroma, and taste over time. ",
+            "question6": "",
+            "answer6": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_group_RYxBHj",
+        "faq_group_x7xA7B",
+        "faq_group_GCqGBb",
+        "faq_group_B3UNkU",
+        "faq_group_H3AD9J"
+      ],
+      "name": "FAQ-section",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "A few things you may wonder before enjoying matcha."
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "jm_sub_hero_j49Ufx",
+    "jm_faq_DXjpVn",
+    "main"
+  ]
+}

@@ -1,0 +1,48 @@
+<div
+  class="jm-spacer"
+  style="
+    padding-top: {{ section.settings.padding_top }}px;
+    background-color: {{ section.settings.bg_color }};
+  "
+>
+</div>
+
+{% schema %}
+{
+  "name": "Spacer",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Block",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_sp",
+      "label": "Padding（SP）",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacer",
+      "category": "Page"
+    }
+  ]
+}
+{% endschema %}

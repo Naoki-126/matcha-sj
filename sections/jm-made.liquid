@@ -1,0 +1,88 @@
+<div class="breadcrumbs-area">
+  <nav  role="navigation" aria-label="breadcrumb">
+    <ol class="breadcrumb-wrap">
+      <li class="breadcrumb-page"><a href="{{ routes.root_url }}">HOME</a></li>
+      <li class="breadcrumb-page">{{ page.title }}</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="jm-made">
+  <div class="page-inner">
+    <div class="content-inner">
+
+      <div class="jm-made__contents">
+        <div class="jm-made__contentArea">
+          <div class="jm-section__ttlArea jm-made__ttlArea">
+            {% if section.settings.ttl != blank %}
+              <h2 class="jm-section__title jm-made__title">
+                {{ section.settings.ttl }}
+              </h2>
+            {% endif %}
+
+            {% if section.settings.subttl != blank %}
+              <p class="jm-section__subtitle jm-made__subtitle">
+                {{ section.settings.subttl }}
+              </p>
+            {% endif %}
+          </div>
+
+          {% if section.settings.text != blank %}
+            <div class="jm-made__text rte">
+              {{ section.settings.text }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="jm-made__imgArea">
+          {% if section.settings.image != blank %}
+            <div class="jm-made__image">
+              {{ section.settings.image | image_url: width: 750 | image_tag: loading: 'lazy'}}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "産地紹介｜made",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "ttl",
+      "label": "タイトル",
+      "default": "ORIGIN OF MATCHA"
+    },
+    {
+      "type": "text",
+      "id": "subttl",
+      "label": "サブタイトル",
+      "default": "抹茶が生まれる場所"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "説明文",
+      "default": "<p>日本有数の茶産地で育まれた抹茶。</p><p>自然と人の手が調和する環境が、豊かな旨味と香りを生み出します。</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "産地イメージ画像"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Place of Origin（made）",
+      "category": "About"
+    }
+  ]
+}
+{% endschema %}

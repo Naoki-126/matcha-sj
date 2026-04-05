@@ -1,0 +1,104 @@
+<section class="jm-subHero"  style="
+    --hero-height-pc: {{ section.settings.hero_height_pc }}vh;
+    --hero-height-sp: {{ section.settings.hero_height_sp }}vh;
+    --hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  " >
+  <div class="jm-subHero__contents">
+
+    {%- if section.settings.img != blank -%}
+      <div class="jm-subHero__imgArea">
+        <div class="jm-subHero__imgArea-content">
+          <img
+            class="jm-subHero__img"
+            src="{{ section.settings.img | image_url: width: 2000 }}"
+            alt="{{ section.settings.ttl | escape }}  - Sub Hero Image"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.ttl != blank or section.settings.txt != blank -%}
+      <div class="jm-subHero__ttlArea">
+        <div class="jm-subHero__ttlArea-content">
+          {%- if section.settings.ttl != blank -%}
+            <h1 class="jm-subHero__title">
+              {{ section.settings.ttl }}
+            </h1>
+          {%- endif -%}
+
+          {%- if section.settings.txt != blank -%}
+            <p class="jm-subHero__text">
+              {{ section.settings.txt | newline_to_br }}
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sub Hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "hero_height_pc",
+      "label": "Hero height (PC)",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "hero_height_sp",
+      "label": "Hero height (SP)",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image overlay darkness",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "text",
+      "id": "ttl",
+      "label": "Title (English)",
+      "default": "ABOUT US"
+    },
+    {
+      "type": "textarea",
+      "id": "txt",
+      "label": "Text (Japanese)",
+      "default": "日本の抹茶、その本質と美しさを世界へ。"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sub Hero",
+      "category": "Page"
+    }
+  ]
+}
+{% endschema %}

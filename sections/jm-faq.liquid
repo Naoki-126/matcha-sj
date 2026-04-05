@@ -1,0 +1,157 @@
+<main class="page-faq">
+  <div class="breadcrumbs-area">
+    <nav  role="navigation" aria-label="breadcrumb">
+      <ol class="breadcrumb-wrap">
+        <li class="breadcrumb-page"><a href="{{ routes.root_url }}">HOME</a></li>
+        <li class="breadcrumb-page">{{ page.title }}</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="js-faq"  class="jm-faq" >
+    <div class="page-inner">
+      <div class="content-inner">
+        <div class="jm-faq__ttlArea">
+          {% if section.settings.heading != blank %}
+            <h2 class="jm-section__title">
+              {{ section.settings.heading }}
+            </h2>
+          {% endif %}
+          {% if section.settings.subheading != blank %}
+            <p class="jm-section__subtitle">
+              {{ section.settings.subheading }}
+            </p>
+          {% endif %}
+        </div>
+        <div class="jm-faq__contents">
+          {% for block in section.blocks %}
+            {% assign faq_block = block.settings %}
+            <div class="jm-faq__content">
+              {% if block.settings.sub_title != blank %}
+                <h2 class="jm-faq__title">{{ faq_block.sub_title }}</h2>
+              {% endif %}
+              <div class="jm-faq__accordionArea">
+                {% for i in (1..6) %}
+                  {% assign question_key = "question" | append: i %}
+                  {% assign answer_key = "answer" | append: i %}
+                  {% assign question = faq_block[question_key] %}
+                  {% assign answer = faq_block[answer_key] %}
+                  {% if question != blank %}
+                    <div class="jm-accordion__q">{{ question }}</div>
+                    {% if answer != blank %}
+                      <div class="jm-accordion__a">{{ answer |  newline_to_br }}</div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+      {
+      "type": "text",
+      "id": "heading",
+      "label": "見出し",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "サブ見出し",
+      "default": "A few things you may wonder before enjoying matcha."
+    },
+  ],
+  "blocks": [
+    {
+      "type": "faq_group",
+      "name": "FAQカテゴリー",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "Category_タイトル"
+        },
+        {
+          "type": "text",
+          "id": "question1",
+          "label": "Question_1"
+        },
+        {
+          "type": "textarea",
+          "id": "answer1",
+          "label": "Answer_1"
+        },
+        {
+          "type": "text",
+          "id": "question2",
+          "label": "Question_2"
+        },
+        {
+          "type": "textarea",
+          "id": "answer2",
+          "label": "Answer_2"
+        },
+        {
+          "type": "text",
+          "id": "question3",
+          "label": "Question_3"
+        },
+        {
+          "type": "textarea",
+          "id": "answer3",
+          "label": "Answer_3"
+        },
+        {
+          "type": "text",
+          "id": "question4",
+          "label": "Question_4"
+        },
+        {
+          "type": "textarea",
+          "id": "answer4",
+          "label": "Answer_4"
+        },
+        {
+          "type": "text",
+          "id": "question5",
+          "label": "Question_5"
+        },
+        {
+          "type": "textarea",
+          "id": "answer5",
+          "label": "Answer_5"
+        },
+        {
+          "type": "text",
+          "id": "question6",
+          "label": "Question_6"
+        },
+        {
+          "type": "textarea",
+          "id": "answer6",
+          "label": "Answer_6"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ-section",
+      "category": "FAQ"
+    }
+  ]
+}
+{% endschema %}

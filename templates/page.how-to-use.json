@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "jm_sub_hero_7dV9AT": {
+      "type": "jm-sub-hero",
+      "name": "Sub Hero",
+      "settings": {
+        "img": "shopify://shop_images/howto-fv2.jpg",
+        "hero_height_pc": 50,
+        "hero_height_sp": 40,
+        "overlay_opacity": 20,
+        "ttl": "HOW TO USE",
+        "txt": "Simple ways to enjoy matcha at home."
+      }
+    },
+    "jm_use_dRGKHd": {
+      "type": "jm-use",
+      "blocks": {
+        "use_WWq3Ef": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/usucha-shiro.png",
+            "title": "Usucha (Straight Matcha)",
+            "text": "<p><strong>1. Add matcha<br/></strong>Add 2g of matcha powder to a bowl or cup.<br/><br/><strong>2. Mix with hot water</strong><br/>Pour in 60ml of hot water (80°C / 176°F). <br/>Whisk until smooth<br/><br/><strong>3. Whisk until smooth<br/></strong>Whisk well until the matcha is smooth and lightly foamy. <br/><br/><strong>4. Enjoy straight<br/></strong>This is the most reliable standard: the aroma stays clear, the bitterness remains balanced, and the foam is stable. </p>",
+            "reverse": false
+          }
+        },
+        "use_9TnqTz": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/latte.jpg",
+            "title": "Matcha Latte",
+            "text": "<p><strong>1. Add matcha</strong><br/>Add 3 g (about 1½ teaspoons) of matcha powder to a cup.<br/><br/><strong>2. Mix with hot water</strong><br/>Pour in 30–50 ml (about 1–1.7 fl oz) of hot water (75–80°C / 167–176°F) and whisk until smooth.<br/><br/><strong>3. Add your preferred milk</strong><br/>Heat 150–200 ml (about 5–7 fl oz) of your preferred milk, then pour it into the cup.<br/><br/><strong>4. Sweeten if you like</strong><br/>For matcha latte, it is best to make a concentrated matcha base first, then add the milk so the flavor does not become too diluted. <br/></p>",
+            "reverse": true
+          }
+        },
+        "use_8eAhcL": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/smoothie-2.jpg",
+            "title": "Easy Matcha Smoothie",
+            "text": "<p><strong>1. Add matcha</strong><br/>Add 1 teaspoon of matcha powder to a blender.<br/><br/><strong>2. Add fruits and liquid</strong><br/>Add your favorite fruits and milk or water.<br/>(Banana and berries work especially well.)<br/><br/><strong>3. Blend until smooth</strong><br/>Blend until creamy and well combined.<br/><br/><strong>4. Adjust to taste</strong><br/>Add sweetener or ice if desired, then blend again.</p>",
+            "reverse": false
+          }
+        },
+        "use_VVkKGJ": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/pancake.jpg",
+            "title": "Matcha Pancakes",
+            "text": "<p><strong>1. Prepare your batter</strong><br/>Prepare your pancake or baking batter as you normally would.<br/><strong><br/>2. Add matcha</strong><br/>Add matcha powder to the batter and mix gently until well combined.<br/><br/><strong>3. Cook as usual</strong><br/>Cook the pancakes in a pan until golden brown.<br/><br/><strong>4. Finish and enjoy</strong><br/>Serve with fruits, cream, or syrup to taste.</p>",
+            "reverse": true
+          }
+        }
+      },
+      "block_order": [
+        "use_WWq3Ef",
+        "use_9TnqTz",
+        "use_8eAhcL",
+        "use_VVkKGJ"
+      ],
+      "name": "How to use",
+      "settings": {
+        "heading": "Ways to Enjoy Matcha",
+        "subheading": "From traditional preparation to everyday recipes",
+        "text": "<p>Enjoy matcha in many ways, every day.</p>"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "jm_sub_hero_7dV9AT",
+    "jm_use_dRGKHd",
+    "main"
+  ]
+}
