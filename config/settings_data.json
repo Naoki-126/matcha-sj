@@ -146,9 +146,8 @@
           "enable": true,
           "home_only": true,
           "delay": 2,
-          "title": "Want 15% Off the World's Best Tasting Matcha",
-          "text": "Get 15% Off Your First Order\nGet 15% off the best matcha on the planet and be the first to know about new products and special offers.",
-          "button_label": "Email Registration"
+          "step2_image": "shopify://shop_images/matcha-power__image.jpg",
+          "step2_image_alt": "Matcha image"
         }
       }
     },

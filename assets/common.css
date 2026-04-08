@@ -570,3 +570,13 @@ body {
   margin-bottom: 30px;
   font-family: var(--ff-en);
 }
+
+/* products 商品ページ
+=========================== */
+.product-shipping-note {
+  font-size: 12px;
+}
+
+.product-shipping-note:hover {
+  opacity: .7;
+}
