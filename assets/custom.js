@@ -1,6 +1,8 @@
 // alert("テスト");
 
 /* popup
+リモートでこれをコンソールに入れて、状態をリセット
+localStorage.removeItem("jmPopupRegistered")
 =========================== */
 document.addEventListener("DOMContentLoaded", function () {
   const popup = document.getElementById("jm-popup");
@@ -8,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const teaser = document.getElementById("jm-popup-teaser");
   const teaserBtn = teaser ? teaser.querySelector(".jm-popup-teaser__btn") : null;
+  const teaserLabel = document.getElementById("jm-popupTeaserLabel");
+
+  const teaserDefaultLabel = teaser?.dataset.defaultLabel || "Get 15% OFF";
+  const teaserRegisteredLabel = teaser?.dataset.registeredLabel || "Code: DISCOUNT15";
+  const teaserDiscountCode = teaser?.dataset.discountCode || "DISCOUNT15";
 
   const step1 = document.getElementById("jm-popupStep1");
   const step2 = document.getElementById("jm-popupStep2");
@@ -16,15 +23,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const form = document.getElementById("jm-popupForm");
   const success = document.getElementById("jm-popupSuccess");
+  const successFlag = document.getElementById("jm-popupFormSuccessFlag");
   const afterSuccessBtn = document.getElementById("jm-popupAfterSuccess");
   const overlay = popup.querySelector(".jm-popup__overlay");
   const closeBtn = popup.querySelector(".jm-popup__close");
 
+  const discountCodeBtn = document.getElementById("jm-discountCode");
+  const copyMessage = document.getElementById("jm-popupCopyMessage");
+
   const registeredKey = "jmPopupRegistered";
+  const successSeenKey = "jmPopupSuccessSeen";
 
   const isHomeOnly = popup.dataset.homeOnly === "true";
   const isHome = popup.dataset.isHome === "true";
-  const isSuccess = popup.dataset.success === "true";
+  const liquidSuccess = successFlag && successFlag.dataset.success === "true";
+
+  let scrollY = 0;
 
   function isRegistered() {
     return localStorage.getItem(registeredKey) === "true";
@@ -34,19 +48,71 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(registeredKey, "true");
   }
 
+  function isSuccessSeen() {
+    return sessionStorage.getItem(successSeenKey) === "true";
+  }
+
+  function markSuccessSeen() {
+    sessionStorage.setItem(successSeenKey, "true");
+  }
+
+  function clearSuccessSeen() {
+    sessionStorage.removeItem(successSeenKey);
+  }
+
+  function lockScroll() {
+    scrollY = window.scrollY;
+    document.body.classList.add("jm-popup-open");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+  }
+
+  function unlockScroll() {
+    const wasLocked = document.body.classList.contains("jm-popup-open");
+
+    document.body.classList.remove("jm-popup-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+
+    if (wasLocked) {
+      window.scrollTo(0, scrollY);
+    }
+  }
+
   function openPopup() {
-    if (isRegistered() && !isSuccess) return;
     popup.classList.add("is-active");
     popup.setAttribute("aria-hidden", "false");
+    lockScroll();
   }
 
   function closePopup() {
     popup.classList.remove("is-active");
     popup.setAttribute("aria-hidden", "true");
+    unlockScroll();
+  }
+
+  // ★ teaser状態切り替え
+  function setTeaserDefaultState() {
+    if (!teaserLabel) return;
+    teaserLabel.textContent = teaserDefaultLabel;
+  }
+
+  function setTeaserRegisteredState() {
+    if (!teaserLabel) return;
+    teaserLabel.textContent = teaserRegisteredLabel;
   }
 
   function showTeaser() {
-    if (!teaser || isRegistered()) return;
+    if (!teaser) return;
+
+    if (isRegistered()) {
+      setTeaserRegisteredState();
+    } else {
+      setTeaserDefaultState();
+    }
+
     teaser.classList.add("is-active");
   }
 
@@ -56,109 +122,88 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showStep1() {
-    if (step1) {
-      step1.style.display = "block";
-      step1.classList.add("is-active");
-    }
-    if (step2) {
-      step2.style.display = "none";
-      step2.classList.remove("is-active");
-    }
-    if (form) {
-      form.style.display = "none";
-    }
-    if (success) {
-      success.style.display = "none";
-    }
+    step1.style.display = "block";
+    step2.style.display = "none";
+
+    popup.classList.add("is-step1");
+    popup.classList.remove("is-step2");
+
+    form.style.display = "none";
+    success.style.display = "none";
   }
 
   function showStep2() {
-    if (step1) {
-      step1.style.display = "none";
-      step1.classList.remove("is-active");
-    }
-    if (step2) {
-      step2.style.display = "block";
-      step2.classList.add("is-active");
-    }
-    if (form) {
-      form.style.display = "flex";
-    }
-    if (success) {
-      success.style.display = "none";
-    }
+    step1.style.display = "none";
+    step2.style.display = "block";
+
+    popup.classList.remove("is-step1");
+    popup.classList.add("is-step2");
+
+    form.style.display = "flex";
+    success.style.display = "none";
   }
 
   function showSuccessView() {
-    if (step1) {
-      step1.style.display = "none";
-      step1.classList.remove("is-active");
-    }
-    if (step2) {
-      step2.style.display = "block";
-      step2.classList.add("is-active");
-    }
-    if (form) {
-      form.style.display = "none";
-    }
-    if (success) {
-      success.style.display = "block";
-    }
+    step1.style.display = "none";
+    step2.style.display = "block";
+
+    popup.classList.remove("is-step1");
+    popup.classList.add("is-step2");
+
+    form.style.display = "none";
+    success.style.display = "block";
   }
 
   function resetPopupView() {
     showStep1();
   }
 
-  // 成功時だけ登録済みにする
-  if (isSuccess) {
+  const registered = isRegistered();
+  const successSeen = isSuccessSeen();
+
+  // 初回成功時
+  if (liquidSuccess && !registered && !successSeen) {
     markRegistered();
-    hideTeaser();
+    markSuccessSeen();
+    showTeaser();
     openPopup();
     showSuccessView();
-    return;
+  } else if (registered) {
+    showTeaser();
+  } else {
+    clearSuccessSeen();
+    showTeaser();
+
+    const allowAutoOpen = !isHomeOnly || isHome;
+
+    if (allowAutoOpen) {
+      const delay = parseInt(popup.dataset.delay || 2, 10) * 1000;
+
+      setTimeout(function () {
+        if (!isRegistered()) {
+          resetPopupView();
+          openPopup();
+        }
+      }, delay);
+    }
   }
 
-  // すでに登録済みなら何も出さない
-  if (isRegistered()) {
-    closePopup();
-    hideTeaser();
-    return;
-  }
-
-  // 未登録なら teaser は表示
-  showTeaser();
-
-  // popup自動表示
-  const allowAutoOpen = !isHomeOnly || isHome;
-
-  if (allowAutoOpen) {
-    const delay = parseInt(popup.dataset.delay || 2, 10) * 1000;
-
-    setTimeout(function () {
-      if (!isRegistered()) {
-        resetPopupView();
-        openPopup();
-      }
-    }, delay);
-  }
-
-  // teaserクリックで popup 表示
+  // teaserクリック
   if (teaserBtn) {
     teaserBtn.addEventListener("click", function () {
-      resetPopupView();
+      if (isRegistered()) {
+        showSuccessView(); // ★ここが重要
+      } else {
+        resetPopupView();
+      }
       openPopup();
     });
   }
 
-  // YesでSTEP2へ
   if (yesBtn) {
-    yesBtn.addEventListener("click", function () {
-      showStep2();
-    });
+    yesBtn.addEventListener("click", showStep2);
   }
 
-  // Noで閉じる
   if (noBtn) {
     noBtn.addEventListener("click", function () {
       closePopup();
@@ -166,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ×で閉じる
   if (closeBtn) {
     closeBtn.addEventListener("click", function () {
       closePopup();
@@ -174,19 +218,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 成功後の閉じる
   if (afterSuccessBtn) {
-    afterSuccessBtn.addEventListener("click", function () {
+    afterSuccessBtn.addEventListener("click", closePopup);
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", function () {
       closePopup();
     });
   }
 
-  // overlayクリックで閉じる
-  if (overlay) {
-    overlay.addEventListener("click", function () {
-      closePopup();
-      if (!isSuccess) {
-        resetPopupView();
+  // クーポンコピー
+  if (discountCodeBtn) {
+    discountCodeBtn.addEventListener("click", async function () {
+      const code = discountCodeBtn.dataset.code || discountCodeBtn.textContent.trim();
+
+      try {
+        await navigator.clipboard.writeText(code);
+
+        if (copyMessage) {
+          copyMessage.style.display = "block";
+          setTimeout(() => {
+            copyMessage.style.display = "none";
+          }, 1500);
+        }
+      } catch (error) {
+        console.error("Copy failed", error);
       }
     });
   }

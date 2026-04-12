@@ -1,101 +1,128 @@
 {%- if section.settings.enable -%}
-<div
-  id="jm-popup"
-  class="jm-popup"
-  aria-hidden="true"
-  data-delay="{{ section.settings.delay | default: 2 }}"
-  data-home-only="{{ section.settings.home_only }}"
-  data-is-home="{% if request.page_type == 'index' %}true{% else %}false{% endif %}"
->
-  <div class="jm-popup__overlay"></div>
+  <div
+    id="jm-popup"
+    class="jm-popup"
+    aria-hidden="true"
+    data-delay="{{ section.settings.delay | default: 2 }}"
+    data-home-only="{{ section.settings.home_only }}"
+    data-is-home="{% if request.page_type == 'index' %}true{% else %}false{% endif %}"
+  >
+    <div class="jm-popup__overlay"></div>
 
-  <div class="jm-popup__content">
-    <button type="button" class="jm-popup__close" aria-label="Close">×</button>
+    <div class="jm-popup__content">
+      <button type="button" class="jm-popup__close" aria-label="Close">×</button>
 
-    <!-- STEP 1 -->
-    <div id="jm-popupStep1" class="jm-popup__step is-active">
-      <h2 class="jm-popup__title">Want 15% Off Your First Order?</h2>
+      <div id="jm-popupStep1" class="jm-popup__step is-active">
+        <h2 class="jm-popup__title">Want 15% Off Your First Order?</h2>
 
-      <div class="jm-popup__actions">
-        <button type="button" id="jm-popupYes" class="jm-btn">
-          Yes
-        </button>
-        <button type="button" id="jm-popupNo" class="jm-popup__text-btn">
-          No, thank you
-        </button>
+        <div class="jm-popup__actions">
+          <button type="button" id="jm-popupYes" class="jm-btn">Yes</button>
+          <button type="button" id="jm-popupNo" class="jm-popup__text-btn">No, thank you</button>
+        </div>
       </div>
-    </div>
 
-    <!-- STEP 2 -->
-    <div id="jm-popupStep2" class="jm-popup__step" style="display:none;">
-      <div class="jm-popup__step2Layout">
-        <div class="jm-popup__step2Text">
-          <h2 class="jm-popup__title">Want 15% Off Your First Order?</h2>
+      <div id="jm-popupStep2" class="jm-popup__step" style="display:none;">
+        <div class="jm-popup__step2Layout">
+          <div class="jm-popup__step2Text">
+            <h2 class="jm-popup__title">Want 15% Off Your First Order?</h2>
 
-          <div class="jm-popup__text">
-            <p>Enjoy 15% off the best matcha on this earth.</p>
-            <p>Join our list for exclusive releases, rare harvests, and special offers.</p>
-          </div>
+            <div class="jm-popup__text">
+              <p>Enjoy 15% off the best matcha on this earth.</p>
+              <p>Join our list for exclusive releases, rare harvests, and special offers.</p>
+            </div>
 
-          {% form 'customer', id: 'jm-popupForm', class: 'jm-popup__btnArea' %}
-            <input type="hidden" name="contact[tags]" value="newsletter">
+            {% assign popup_success = false %}
 
-            <input
-              type="email"
-              name="contact[email]"
-              placeholder="Enter your email"
-              class="jm-popup__form"
-              required
-              oninvalid="this.setCustomValidity('Please enter your email address.')"
-              oninput="this.setCustomValidity('')"
-            >
+            {% form 'customer', id: 'jm-popupForm', class: 'jm-popup__btnArea' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
 
-            <button type="submit" class="jm-btn">
-              Unlock offer
-            </button>
+              <input
+                type="email"
+                name="contact[email]"
+                placeholder="Enter your email"
+                class="jm-popup__form"
+                required
+                oninvalid="this.setCustomValidity(this.validity.valueMissing ? 'Please enter your email address.' : 'Please enter a valid email address.')"
+                oninput="this.setCustomValidity('')"
+              >
 
-            {% if form.errors %}
-              <div class="jm-popup__error">
-                {{ form.errors | default_errors }}
+              <button type="submit" class="jm-popup__submit">
+                Get 15% Off
+              </button>
+
+              {% if form.posted_successfully? %}
+                {% assign popup_success = true %}
+              {% endif %}
+            {% endform %}
+
+            <div
+              id="jm-popupFormSuccessFlag"
+              data-success="{% if popup_success %}true{% else %}false{% endif %}"
+              hidden
+            ></div>
+
+            <div id="jm-popupSuccess" class="jm-popup__success" style="display:none;">
+              <p class="jm-popup__successTitle">🎉 Thank you for signing up!</p>
+              <p class="jm-popup__successLead">Your 15% discount code:</p>
+
+              <button
+                id="jm-discountCode"
+                class="jm-popup__coupon"
+                type="button"
+                data-code="DISCOUNT15"
+              >
+                DISCOUNT15
+              </button>
+
+              <p class="jm-popup__successGuide">Copy this code and paste it at checkout to enjoy your 15% discount.</p>
+              <p id="jm-popupCopyMessage" class="jm-popup__copyMessage" style="display:none;">
+                Copied!
+              </p>
+
+              <p class="jm-popup__successText">
+                Use this code at checkout and enjoy your first order.
+              </p>
+
+              <div class="jm-popup__successActions">
+                <a href="/collections/all" class="jm-popup__shopBtn">Shop Now</a>
+                <button id="jm-popupAfterSuccess" class="jm-popup__closeBtn" type="button">
+                  Close
+                </button>
               </div>
-            {% endif %}
+            </div>
+          </div>
 
-            {% if form.posted_successfully? %}
-              <div id="jm-popupFormSuccessFlag" data-success="true" hidden></div>
+          <div class="jm-popup__step2Image">
+            {% if section.settings.step2_image != blank %}
+              {{ section.settings.step2_image | image_url: width: 900 | image_tag:
+                class: 'jm-popup__image',
+                alt: section.settings.step2_image_alt | escape
+              }}
+            {% else %}
+              <div class="jm-popup__imagePlaceholder"></div>
             {% endif %}
-          {% endform %}
-
-          <div id="jm-popupSuccess" class="jm-popup__success" style="display:none;">
-            <p>Thank you for signing up!</p>
-            <p>Your 15% discount code:</p>
-            <p><strong id="jm-discountCode">DISCOUNT15</strong></p>
-            <p>Enjoy your first order.</p>
-            <button id="jm-popupAfterSuccess" type="button">Close</button>
           </div>
         </div>
-
-        <div class="jm-popup__step2Image">
-          {% if section.settings.step2_image != blank %}
-            {{ section.settings.step2_image | image_url: width: 900 | image_tag:
-              class: 'jm-popup__image',
-              alt: section.settings.step2_image_alt | escape
-            }}
-          {% else %}
-            <div class="jm-popup__imagePlaceholder"></div>
-          {% endif %}
-        </div>
       </div>
+
     </div>
-
   </div>
-</div>
 
-<!-- teaser -->
-<div id="jm-popup-teaser" class="jm-popup-teaser">
-  <button type="button" class="jm-popup-teaser__btn" aria-label="Open email signup popup">
-    <span>Get 15% OFF</span>
-  </button>
-</div>
+    <div
+    id="jm-popup-teaser"
+    class="jm-popup-teaser"
+    data-default-label="Get 15% OFF"
+    data-registered-label="Your code: DISCOUNT15"
+    data-discount-code="DISCOUNT15"
+  >
+    <button
+      type="button"
+      class="jm-popup-teaser__btn"
+      aria-label="Open popup"
+    >
+      <span id="jm-popupTeaserLabel">Get 15% OFF</span>
+    </button>
+  </div>
 {%- endif -%}
 
 {% schema %}

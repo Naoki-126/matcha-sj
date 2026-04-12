@@ -228,34 +228,61 @@ body {
 }
 
 .jm-popup__content {
-  width: min(42vw, 560px);
-  min-width: 420px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: min(90vw, 1000px);
   background: #fcfbf8;
-  z-index: 2;
-  padding: 24px 32px 32px;
-  border-radius: 12px;
   color: var(--color-base);
   border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
   box-shadow:
     0 22px 50px rgba(0, 0, 0, 0.14),
     0 4px 16px rgba(0, 0, 0, 0.05);
+  padding: 32px 40px 40px;
+  z-index: 2;
+  margin-top: 20px;
+}
+
+/* STEP1 */
+#jm-popup.is-step1 .jm-popup__content {
+  width: min(42vw, 560px);
+  min-width: 420px;
+  padding: 24px 32px 32px;
+}
+
+/* STEP2 / SUCCESS */
+#jm-popup.is-step2 .jm-popup__content {
+  width: min(90vw, 1000px);
+  min-width: 700px;
+  padding: 32px 40px 40px;
 }
 
 .jm-popup__close {
-  display: inline-flex;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 28px;
   line-height: 1;
-  font-size: 20px;
-  color: #666;
-  background: none;
   border: none;
-  padding: 0;
+  background: transparent;
+  color: #666;
   cursor: pointer;
+  z-index: 5;
+}
+
+.jm-popup__step {
+  display: none;
+}
+
+.jm-popup__step.is-active {
+  display: block;
 }
 
 .jm-popup__title {
@@ -275,53 +302,7 @@ body {
   color: rgba(0, 0, 0, 0.72);
 }
 
-.jm-popup__btnArea {
-  margin-top: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.jm-popup__form {
-  padding: 11px 14px;
-  width: 220px;
-  min-height: 44px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 6px;
-  background: #fff;
-  font-size: 14px;
-}
-
-.jm-popup__form:focus {
-  outline: none;
-  border-color: var(--bg-main);
-  box-shadow: 0 0 0 3px rgba(79, 111, 82, 0.12);
-}
-
-.jm-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  padding: 12px 18px;
-  min-height: 44px;
-  border-radius: 6px;
-  background: var(--bg-main);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.jm-btn:hover {
-  background-color: var(--bg-sub);
-  transform: translateY(-1px);
-}
-
+/* STEP1 actions */
 .jm-popup__actions {
   display: flex;
   flex-direction: column;
@@ -330,8 +311,26 @@ body {
   margin-top: 24px;
 }
 
-.jm-popup__actions .jm-btn {
-  width: auto;
+.jm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--bg-main);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.jm-btn:hover {
+  background-color: var(--bg-sub);
+  transform: translateY(-1px);
 }
 
 #jm-popupYes {
@@ -344,7 +343,7 @@ body {
   border: none;
   padding: 0;
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.65);
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -352,41 +351,20 @@ body {
   cursor: pointer;
 }
 
-.jm-popup__step {
-  display: none;
-}
-
-.jm-popup__step.is-active {
-  display: block;
-}
-
-.jm-popup__success {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.jm-popup__success p {
-  margin: 0 0 10px;
-  line-height: 1.6;
-}
-
-.jm-popup__error {
-  margin-top: 12px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #b42318;
-  text-align: center;
-}
-
+/* STEP2 layout */
 .jm-popup__step2Layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
-  gap: 24px;
-  margin-top: 8px;
+  gap: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .jm-popup__step2Text {
+  position: relative;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -407,6 +385,7 @@ body {
 
 .jm-popup__step2Image {
   position: relative;
+  z-index: 3;
   min-height: 360px;
   border-radius: 10px;
   overflow: hidden;
@@ -417,8 +396,8 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 360px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .jm-popup__imagePlaceholder {
@@ -428,6 +407,175 @@ body {
   background: linear-gradient(180deg, #f3efe6 0%, #e8e1d2 100%);
 }
 
+/* form area */
+.jm-popup__btnArea {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.jm-popup__form {
+  flex: 1;
+  width: 220px;
+  min-height: 56px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 16px;
+}
+
+.jm-popup__form:focus {
+  outline: none;
+  border-color: var(--bg-main);
+  box-shadow: 0 0 0 3px rgba(79, 111, 82, 0.12);
+}
+
+.jm-popup__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4f6f52;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.jm-popup__submit:hover {
+  background-color: var(--bg-sub);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.jm-popup__submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.jm-popup__error {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #b42318;
+  text-align: center;
+}
+
+/* success */
+.jm-popup__success {
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.jm-popup__successTitle {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4f6f52;
+}
+
+.jm-popup__successLead {
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+
+.jm-popup__coupon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  min-height: 64px;
+  padding: 0 24px;
+  border: 2px dashed #6d8d70;
+  border-radius: 12px;
+  background: #f7f7f2;
+  color: #4f6f52;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.jm-popup__coupon:hover {
+  background: #eef3ec;
+}
+
+.jm-popup__copyMessage {
+  margin-top: 10px;
+  color: #4f6f52;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.jm-popup__successText {
+  margin-top: 18px;
+  color: #5e5a57;
+}
+
+.jm-popup__successActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.jm-popup__successGuide {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #5e5a57;
+  line-height: 1.6;
+}
+
+.jm-popup__shopBtn,
+.jm-popup__closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.jm-popup__shopBtn {
+  border: none;
+  background: #4f6f52;
+  color: #fff;
+}
+
+.jm-popup__shopBtn:hover {
+  background: var(--bg-sub);
+  transform: translateY(-1px);
+}
+
+.jm-popup__closeBtn {
+  border: none;
+  background: #e8e2d8;
+  color: #4f6f52;
+}
+
+.jm-popup__closeBtn:hover {
+  opacity: 0.9;
+}
+
+/* teaser */
 .jm-popup-teaser {
   position: fixed;
   left: 0;
@@ -464,12 +612,20 @@ body {
   outline-offset: 2px;
 }
 
+/* mobile */
 @media screen and (max-width: 749px) {
   .jm-popup__content {
-    width: calc(100% - 32px);
+    width: 92vw;
     min-width: auto;
-    max-width: 360px;
-    padding: 18px 18px 22px;
+    padding: 18px;
+    margin-top: 10px;
+  }
+
+  #jm-popup.is-step1 .jm-popup__content,
+  #jm-popup.is-step2 .jm-popup__content {
+    width: 92vw;
+    min-width: auto;
+    padding: 18px;
   }
 
   .jm-popup__title {
@@ -485,23 +641,16 @@ body {
     gap: 10px;
   }
 
-  .jm-popup__form {
-    width: 100%;
-  }
-
-  .jm-btn {
+  .jm-popup__form,
+  .jm-popup__submit,
+  .jm-btn,
+  #jm-popupYes {
     width: 100%;
   }
 
   #jm-popupYes {
-    width: 100%;
     min-width: 0;
     padding: 12px 20px;
-  }
-
-  .jm-popup-teaser__btn {
-    font-size: 12px;
-    padding: 10px 12px;
   }
 
   .jm-popup__step2Layout {
@@ -518,10 +667,33 @@ body {
     justify-content: center;
   }
 
-  .jm-popup__step2Image,
+  .jm-popup__step2Image {
+    order: -1;
+    min-height: 220px;
+  }
+
   .jm-popup__image,
   .jm-popup__imagePlaceholder {
     min-height: 220px;
+  }
+
+  .jm-popup__coupon {
+    min-width: 100%;
+    font-size: 20px;
+  }
+
+  .jm-popup__successActions {
+    flex-direction: column;
+  }
+
+  .jm-popup__shopBtn,
+  .jm-popup__closeBtn {
+    width: 100%;
+  }
+
+  .jm-popup-teaser__btn {
+    font-size: 12px;
+    padding: 10px 12px;
   }
 }
 
