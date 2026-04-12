@@ -60,6 +60,20 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
+        <!-- クーポンコード追加 -->
+        <div class="jm-product-discount-box">
+          <p class="jm-product-discount-text">
+            Use code <strong>DISCOUNT15</strong> at checkout and save 15% on your first order.
+          </p>
+
+          <button type="button" class="jm-copy-btn" data-code="DISCOUNT15">
+            Copy code
+          </button>
+
+          <span class="jm-copy-feedback" aria-live="polite"></span>
+        </div>
+
+
         <div class="product-form__buttons">
           {%- liquid
             assign check_against_inventory = true

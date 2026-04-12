@@ -289,6 +289,32 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
 });
 
+/* snippets/buy-buttons.liquidにクーポン追加
+=========================== */
+document.addEventListener("click", async function (e) {
+  const btn = e.target.closest(".jm-copy-btn");
+  if (!btn) return;
+
+  const code = btn.dataset.code;
+  const feedback = btn.parentElement.querySelector(".jm-copy-feedback");
+
+  try {
+    await navigator.clipboard.writeText(code);
+    if (feedback) {
+      feedback.textContent = "Copied!";
+      setTimeout(() => {
+        feedback.textContent = "";
+      }, 2000);
+    }
+  } catch (error) {
+    if (feedback) {
+      feedback.textContent = "Failed to copy";
+      setTimeout(() => {
+        feedback.textContent = "";
+      }, 2000);
+    }
+  }
+});
 
 /* ===========================
 # jm-diagnosis
