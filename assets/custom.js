@@ -289,31 +289,147 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
 });
 
-/* snippets/buy-buttons.liquidにクーポン追加
+/* snippets/buy-buttons.liquid popup open
 =========================== */
-document.addEventListener("click", async function (e) {
-  const btn = e.target.closest(".jm-copy-btn");
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".jm-open-popup-btn");
   if (!btn) return;
 
-  const code = btn.dataset.code;
-  const feedback = btn.parentElement.querySelector(".jm-copy-feedback");
+  const popup = document.getElementById("jm-popup");
+  if (!popup) return;
 
-  try {
-    await navigator.clipboard.writeText(code);
-    if (feedback) {
-      feedback.textContent = "Copied!";
-      setTimeout(() => {
-        feedback.textContent = "";
-      }, 2000);
+  const step1 = document.getElementById("jm-popupStep1");
+  const step2 = document.getElementById("jm-popupStep2");
+  const success = document.getElementById("jm-popupSuccess");
+  const teaser = document.getElementById("jm-popup-teaser");
+
+  const registeredKey = "jmPopupRegistered";
+  const isRegistered = localStorage.getItem(registeredKey) === "true";
+
+  if (isRegistered) {
+    if (step1) {
+      step1.style.display = "none";
+      step1.classList.remove("is-active");
     }
-  } catch (error) {
-    if (feedback) {
-      feedback.textContent = "Failed to copy";
-      setTimeout(() => {
-        feedback.textContent = "";
-      }, 2000);
+
+    if (step2) {
+      step2.style.display = "";
+      step2.classList.add("is-active");
+    }
+
+    if (success) {
+      success.style.display = "block";
+    }
+
+    if (teaser) {
+      teaser.style.display = "";
+    }
+  } else {
+    if (step1) {
+      step1.style.display = "";
+      step1.classList.add("is-active");
+    }
+
+    if (step2) {
+      step2.style.display = "none";
+      step2.classList.remove("is-active");
+    }
+
+    if (success) {
+      success.style.display = "none";
     }
   }
+
+  popup.style.display = "block";
+  popup.setAttribute("aria-hidden", "false");
+  document.documentElement.classList.add("jm-popup-open");
+  document.body.classList.add("jm-popup-open");
+});
+
+/* snippets/buy-buttons.liquid popup open
+=========================== */
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".jm-open-popup-btn");
+  if (!btn) return;
+
+  const popup = document.getElementById("jm-popup");
+  if (!popup) return;
+
+  const step1 = document.getElementById("jm-popupStep1");
+  const step2 = document.getElementById("jm-popupStep2");
+  const success = document.getElementById("jm-popupSuccess");
+  const teaser = document.getElementById("jm-popup-teaser");
+
+  const registeredKey = "jmPopupRegistered";
+  const isRegistered = localStorage.getItem(registeredKey) === "true";
+
+  if (isRegistered) {
+    if (step1) {
+      step1.style.display = "none";
+      step1.classList.remove("is-active");
+    }
+
+    if (step2) {
+      step2.style.display = "";
+      step2.classList.add("is-active");
+    }
+
+    if (success) {
+      success.style.display = "block";
+    }
+
+    if (teaser) {
+      teaser.style.display = "";
+    }
+  } else {
+    if (step1) {
+      step1.style.display = "";
+      step1.classList.add("is-active");
+    }
+
+    if (step2) {
+      step2.style.display = "none";
+      step2.classList.remove("is-active");
+    }
+
+    if (success) {
+      success.style.display = "none";
+    }
+  }
+
+  popup.style.display = "block";
+  popup.setAttribute("aria-hidden", "false");
+  popup.classList.add("is-visible");
+  document.documentElement.classList.add("jm-popup-open");
+  document.body.classList.add("jm-popup-open");
+});
+
+/* popup close fix
+=========================== */
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("jm-popup");
+  if (!popup) return;
+
+  const overlay = popup.querySelector(".jm-popup__overlay");
+  const closeBtns = popup.querySelectorAll(
+    ".jm-popup__close, #jm-popupAfterSuccess, #jm-popupNo"
+  );
+
+  function hidePopup() {
+    popup.style.display = "none";
+    popup.setAttribute("aria-hidden", "true");
+    popup.classList.remove("is-visible");
+    document.documentElement.classList.remove("jm-popup-open");
+    document.body.classList.remove("jm-popup-open");
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", hidePopup);
+  }
+
+  closeBtns.forEach((btn) => {
+    btn.addEventListener("click", hidePopup);
+  });
 });
 
 /* ===========================

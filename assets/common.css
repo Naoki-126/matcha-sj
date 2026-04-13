@@ -753,64 +753,47 @@ body {
   opacity: .7;
 }
 
-/* snippets/buy-buttons.liquidにクーポン追加
+/* snippets/buy-buttons.liquid discount guide
 =========================== */
 .jm-product-discount-box {
-  margin: 18px 0 22px;
-  padding: 16px 18px;
+  margin: 24px 0 20px;
+  padding: 28px 32px;
   background: #f8f7f2;
-  border: 1px solid rgba(79, 111, 82, 0.28);
-  border-radius: 10px;
+  border: 1px solid rgba(79, 111, 82, 0.22);
+  border-radius: 18px;
 }
 
 .jm-product-discount-text {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   font-size: 15px;
-  line-height: 1.7;
-  color: #445d49;
-}
-
-.jm-product-discount-text strong {
-  font-weight: 700;
-  color: #2f4634;
+  line-height: 1.8;
+  color: #5a725e;
   letter-spacing: 0.03em;
 }
 
-.jm-copy-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 112px;
-  min-height: 42px;
-  padding: 10px 18px;
-  border: 1px solid #4f6f52;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #3f5945;
-  font-size: 14px;
+.jm-open-popup-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #4f6f52;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
-.jm-copy-btn:hover {
-  color: #fff;
-  background-color: var(--bg-main);
+.jm-open-popup-btn:hover {
+  opacity: 0.72;
 }
 
-.jm-copy-btn:active {
-  transform: translateY(1px);
-}
-
-.jm-copy-feedback {
-  display: inline-block;
-  min-width: 70px;
-  margin-left: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #2f4634;
-  vertical-align: middle;
+.jm-open-popup-btn:focus-visible {
+  outline: 2px solid rgba(79, 111, 82, 0.28);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .product-form__buttons {
