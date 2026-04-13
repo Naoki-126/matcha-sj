@@ -812,3 +812,75 @@ body {
   color: #2f4634;
   vertical-align: middle;
 }
+
+.product-form__buttons {
+  margin-top: 18px;
+}
+
+.product-form__submit {
+  min-height: 56px;
+  padding: 16px 24px;
+  border-radius: 6px;
+  border: 1px solid #4f6f52;
+  background: #4f6f52;
+  color: #f8f7f2;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 20px rgba(79, 111, 82, 0.14);
+}
+
+.product-form__submit span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-form__submit:hover {
+  background: #445d49;
+  border-color: #445d49;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(79, 111, 82, 0.18);
+}
+
+.product-form__submit:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(79, 111, 82, 0.14);
+}
+
+.product-form__submit:focus-visible {
+  outline: 2px solid rgba(79, 111, 82, 0.28);
+  outline-offset: 3px;
+}
+
+.product-form__submit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* main-cart-footer.liquid クーポン追加
+=========================== */
+.jm-cart-discount-box {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  background: #f8f7f2;
+  border: 1px solid rgba(79, 111, 82, 0.25);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.jm-cart-discount-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4f6f52;
+}
+
+.jm-cart-discount-box strong {
+  font-weight: 700;
+  color: #2f4634;
+  letter-spacing: 0.03em;
+}

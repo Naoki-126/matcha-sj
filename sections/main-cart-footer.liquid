@@ -102,6 +102,14 @@
                     {%- endif -%}
                   {%- endif -%}
                 </small>
+
+                <!-- ここに追加 -->
+                <div class="jm-cart-discount-box">
+                  <p>
+                    Use code <strong>DISCOUNT15</strong> at checkout to save 15%.
+                  </p>
+                </div>
+
               </div>
             {%- else -%}
               <div class="cart__ctas" {{ block.shopify_attributes }}>
@@ -129,6 +137,8 @@
 
         <div id="cart-errors"></div>
       </div>
+
+
     </div>
   </div>
 </div>
@@ -147,7 +157,7 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
-    },    
+    },
     {
       "type": "range",
       "id": "padding_top",
