@@ -198,13 +198,128 @@ body {
   =========================== */
   .jm-footer {
   padding-top: 40px !important;
-}
+  }
 
   /* jm-spacer
   =========================== */
     #shopify-section-{{ section.id }} .jm-spacer {
       padding-top: {{ section.settings.padding_top_sp }}px;
     }
+}
+
+/* footer custom
+=========================== */
+.jm-footer__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 24px 0 40px;
+  align-items: start;
+}
+
+.jm-footer__heading {
+  margin: 0 0 12px;
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.jm-footer__text {
+  margin-bottom: 20px;
+  max-width: 48rem;
+}
+
+.jm-footer__external-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.jm-footer__external-links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.jm-footer__top-right {
+  justify-self: end;
+  text-align: left;
+}
+
+.jm-footer__menu-title {
+  margin: 0 0 16px;
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.jm-footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.jm-footer__menu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.jm-footer__bg {
+  padding-top: 24px;
+  padding-bottom: 20px;
+}
+
+.jm-footer__meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px 32px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.jm-footer__copyright {
+  display: block;
+}
+
+.jm-footer__policies {
+  display: flex;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.jm-footer__policies a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 749px) {
+  .jm-footer__top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 20px 0 32px;
+  }
+
+  .jm-footer__top-right {
+    justify-self: start;
+  }
+
+  .jm-footer__menu {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .jm-footer__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .jm-footer__policies {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 /* pop-up
@@ -629,7 +744,17 @@ body {
   }
 
   .jm-popup__title {
+    margin-top: 0;
+    padding-top: 40px;
     font-size: 22px;
+  }
+
+  .jm-popup__close {
+    top: 12px;
+    left: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 26px;
   }
 
   .jm-popup__text {
@@ -663,18 +788,62 @@ body {
     text-align: center;
   }
 
+  .jm-popup__step2Text .jm-popup__title {
+    padding-top: 10px;
+  }
+
   .jm-popup__step2Text .jm-popup__btnArea {
     justify-content: center;
   }
 
   .jm-popup__step2Image {
     order: -1;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f1ea;
+    padding: 8px;
+  }
+
+  .jm-popup__image {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 10px;
+  }
+
+  .jm-popup__imagePlaceholder {
+    width: 100%;
     min-height: 220px;
   }
 
   .jm-popup__image,
   .jm-popup__imagePlaceholder {
     min-height: 220px;
+  }
+
+   /* success時は画像を非表示 */
+  #jm-popup.is-step2.is-success .jm-popup__step2Image {
+    display: none;
+  }
+
+   /* success時は上の説明も非表示 */
+  #jm-popup.is-step2.is-success .jm-popup__step2Text .jm-popup__title,
+  #jm-popup.is-step2.is-success .jm-popup__step2Text .jm-popup__text,
+  #jm-popup.is-step2.is-success .jm-popup__btnArea {
+    display: none;
+  }
+
+  /* success本体を上に詰める */
+  #jm-popup.is-step2.is-success .jm-popup__success {
+    margin-top: 0;
+  }
+
+  #jm-popup.is-step2.is-success .jm-popup__step2Text {
+    justify-content: flex-start;
   }
 
   .jm-popup__coupon {

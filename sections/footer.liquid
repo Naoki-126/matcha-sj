@@ -1,9 +1,9 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
-{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'component-newsletter.css' | asset_url | stylesheet_tag }} {% endcomment %}
 {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'component-list-social.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
 {%- style -%}
   .footer {
@@ -42,7 +42,8 @@
       assign only_empty_brand = true
     endif
   -%}
-  {%- if section.blocks.size > 0
+
+  {% comment %} {%- if section.blocks.size > 0
     or section.settings.newsletter_enable
     or section.settings.show_social
     and has_social_icons == true
@@ -165,7 +166,7 @@
             data-cascade
           {% endif %}
         >
-          {% comment %} {%- if section.settings.newsletter_enable -%}
+          {%- if section.settings.newsletter_enable -%}
             <div class="footer-block__newsletter">
               {%- if section.settings.newsletter_heading != blank -%}
                 <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
@@ -234,7 +235,7 @@
                 {%- endif -%}
               {%- endform -%}
             </div>
-          {%- endif -%} {% endcomment %}
+          {%- endif -%}
 
           {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
             <div class="footer__follow-on-shop">
@@ -248,9 +249,48 @@
         </div>
       </div>
     {%- endunless -%}
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
 
+  <div class="jm-footer__top page-width">
+    <div div class="jm-footer__top-left">
+      {%- if section.settings.footer_heading != blank -%}
+        <p class="jm-footer__heading">{{ section.settings.footer_heading }}</p>
+      {%- endif -%}
 
+      {%- if section.settings.footer_text != blank -%}
+        <div class="jm-footer__text rte">{{ section.settings.footer_text }}</div>
+      {%- endif -%}
+
+      <div class="jm-footer__external-links">
+        {%- if section.settings.instagram_url != blank -%}
+          <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.website_url != blank -%}
+          <a href="{{ section.settings.website_url }}" target="_blank" rel="noopener noreferrer">
+            Official Website
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="jm-footer__top-right">
+      {%- if section.settings.footer_menu != blank -%}
+        <p class="jm-footer__menu-title">Menu</p>
+        <ul class="jm-footer__menu list-unstyled">
+          {%- for link in linklists[section.settings.footer_menu].links -%}
+            <li>
+              <a href="{{ link.url }}" class="{% if link.active %}list-menu__item--active{% endif %}">
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
 
 
   <div
@@ -272,7 +312,7 @@
           </localization-form>
         {%- endif -%}
 
-        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+        {% comment %} {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
           <localization-form>
             {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
               <div>
@@ -283,7 +323,8 @@
               </div>
             {%- endform -%}
           </localization-form>
-        {%- endif -%}
+        {%- endif -%} {% endcomment %}
+
       </div>
       <div class="footer__column footer__column--info">
         {%- if section.settings.payment_enable -%}
@@ -301,14 +342,14 @@
       </div>
     </div>
 
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+    {% comment %} <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption" style="display:flex; gap:30px; margin: 0 auto;">
         <small class="copyright__content" style="display:flex;"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
         </small>
-        {% comment %} <small class="copyright__content">{{ powered_by_link }}</small> {% endcomment %}
+        <small class="copyright__content">{{ powered_by_link }}</small>
 
-        {% comment %} {%- if section.settings.show_policy -%}
+        {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
               {%- if policy != blank -%}
@@ -320,7 +361,35 @@
               {%- endif -%}
             {%- endfor -%}
           </ul>
-        {%- endif -%} {% endcomment %}
+        {%- endif -%}
+
+        {%- if section.settings.show_policy -%}
+          {%- assign policy_menu = linklists['footer-policy'] -%}
+
+          {%- if policy_menu.links.size > 0 -%}
+            <ul class="policies list-unstyled">
+              {%- for link in policy_menu.links -%}
+                <li>
+                  <small class="copyright__content">
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </small>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        {%- endif -%}
+
+      </div>
+    </div> {% endcomment %}
+
+    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+      <div class="footer__copyright caption" style="display:flex; gap:30px; margin: 0 auto;">
+        <small class="copyright__content" style="display:flex;"
+          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
+        </small>
+        {% comment %} <small class="copyright__content">{{ powered_by_link }}</small> {% endcomment %}
+
+        {% comment %} ... shop.policies版 ... {% endcomment %}
 
         {%- if section.settings.show_policy -%}
           {%- assign policy_menu = linklists['footer-policy'] -%}
@@ -514,6 +583,34 @@
       "default": true,
       "label": "t:sections.footer.settings.show_policy.label",
       "info": "t:sections.footer.settings.show_policy.info"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "footer_heading",
+      "label": "Footer heading",
+      "default": "Invitation"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "<p>Rooted in Japan-grown matcha, refined for daily ritual.</p>"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer menu",
+      "default": "footer"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "website_url",
+      "label": "Official website URL"
     },
     {
       "type": "header",

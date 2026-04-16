@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (step2) step2.style.display = "none";
 
     popup.classList.add("is-step1");
-    popup.classList.remove("is-step2");
+    popup.classList.remove("is-step2", "is-success");
 
     if (form) form.style.display = "none";
     if (success) success.style.display = "none";
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (step1) step1.style.display = "none";
     if (step2) step2.style.display = "block";
 
-    popup.classList.remove("is-step1");
+    popup.classList.remove("is-step1", "is-success");
     popup.classList.add("is-step2");
 
     if (form) form.style.display = "flex";
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (step2) step2.style.display = "block";
 
     popup.classList.remove("is-step1");
-    popup.classList.add("is-step2");
+    popup.classList.add("is-step2", "is-success");
 
     if (form) form.style.display = "none";
     if (success) success.style.display = "block";
