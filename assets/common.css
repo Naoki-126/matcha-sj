@@ -259,6 +259,7 @@ body {
 }
 
 .jm-footer__menu a {
+  font-size: 16px;
   text-decoration: none;
   color: inherit;
 }
@@ -298,7 +299,7 @@ body {
   .jm-footer__top {
     grid-template-columns: 1fr;
     gap: 28px;
-    padding: 20px 0 32px;
+    padding: 20px 16px 32px;
   }
 
   .jm-footer__top-right {
@@ -308,6 +309,10 @@ body {
   .jm-footer__menu {
     flex-direction: column;
     gap: 14px;
+  }
+
+  .jm-footer__menu a {
+    font-size: 14px;
   }
 
   .jm-footer__meta {
