@@ -295,6 +295,30 @@ body {
   text-decoration: none;
 }
 
+.jm-footer__brand-name,
+.jm-footer__heading {
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.jm-footer__brand-text {
+  max-width: 520px;
+  margin-top: 16px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.jm-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 20px;
+}
+
+.jm-footer__social a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 749px) {
   .jm-footer__top {
     grid-template-columns: 1fr;
@@ -323,6 +347,22 @@ body {
 
   .jm-footer__policies {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .jm-footer__brand-name,
+  .jm-footer__heading {
+    font-size: 28px;
+  }
+
+  .jm-footer__brand-text {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .jm-footer__social {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
   }
 }

@@ -252,27 +252,33 @@
   {%- endif -%} {% endcomment %}
 
   <div class="jm-footer__top page-width">
-    <div div class="jm-footer__top-left">
-      {%- if section.settings.footer_heading != blank -%}
-        <p class="jm-footer__heading">{{ section.settings.footer_heading }}</p>
-      {%- endif -%}
-
-      {%- if section.settings.footer_text != blank -%}
-        <div class="jm-footer__text rte">{{ section.settings.footer_text }}</div>
-      {%- endif -%}
-
-      <div class="jm-footer__external-links">
-        {%- if section.settings.instagram_url != blank -%}
-          <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer">
-            Instagram
-          </a>
+    <div class="jm-footer__top-left">
+      <div class="jm-footer__brand-block">
+        {%- if settings.logo != blank -%}
+          <div class="jm-footer__logo">
+            {{ settings.logo | image_url: width: 220 | image_tag: alt: shop.name }}
+          </div>
+        {%- else -%}
+          <p class="jm-footer__brand-name">{{ shop.name }}</p>
         {%- endif -%}
 
-        {%- if section.settings.website_url != blank -%}
-          <a href="{{ section.settings.website_url }}" target="_blank" rel="noopener noreferrer">
-            Official Website
-          </a>
+        {%- if section.settings.footer_text != blank -%}
+          <div class="jm-footer__text rte">{{ section.settings.footer_text }}</div>
         {%- endif -%}
+
+        <div class="jm-footer__external-links">
+          {%- if section.settings.instagram_url != blank -%}
+            <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.website_url != blank -%}
+            <a href="{{ section.settings.website_url }}" target="_blank" rel="noopener noreferrer">
+              Official Website
+            </a>
+          {%- endif -%}
+        </div>
       </div>
     </div>
 
