@@ -251,12 +251,20 @@
     {%- endunless -%}
   {%- endif -%} {% endcomment %}
 
-  <div class="jm-footer__top page-width">
+  <div class="jm-footer__top page-width content-inner">
     <div class="jm-footer__top-left">
       <div class="jm-footer__brand-block">
-        {%- if settings.logo != blank -%}
+        {%- if section.settings.footer_logo != blank -%}
           <div class="jm-footer__logo">
-            {{ settings.logo | image_url: width: 220 | image_tag: alt: shop.name }}
+            {{
+              section.settings.footer_logo
+              | image_url: width: section.settings.footer_logo_width
+              | image_tag:
+                alt: shop.name,
+                widths: '120, 180, 240, 320, 480',
+                width: section.settings.footer_logo_width,
+                loading: 'lazy'
+            }}
           </div>
         {%- else -%}
           <p class="jm-footer__brand-name">{{ shop.name }}</p>
@@ -267,18 +275,48 @@
         {%- endif -%}
 
         <div class="jm-footer__external-links">
+
           {%- if section.settings.instagram_url != blank -%}
-            <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer">
-              Instagram
+            <a
+              href="{{ section.settings.instagram_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              {{ 'icon-instagram.svg' | inline_asset_content }}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.facebook_url != blank -%}
+            <a
+              href="{{ section.settings.facebook_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              {{ 'icon-facebook.svg' | inline_asset_content }}
             </a>
           {%- endif -%}
 
           {%- if section.settings.website_url != blank -%}
-            <a href="{{ section.settings.website_url }}" target="_blank" rel="noopener noreferrer">
-              Official Website
+            <a
+              href="{{ section.settings.website_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Official Website"
+              class="jm-footer__website-link"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3 12h18"></path>
+                <path d="M12 3a15 15 0 0 1 0 18"></path>
+                <path d="M12 3a15 15 0 0 0 0 18"></path>
+              </svg>
             </a>
           {%- endif -%}
+
         </div>
+
       </div>
     </div>
 
@@ -305,118 +343,77 @@
       data-cascade
     {% endif %}
   >
-    <div class="footer__content-bottom-wrapper page-width">
-      <div class="footer__column footer__localization isolate">
-        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-          <localization-form>
-            {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="caption-large text-body" id="FooterCountryLabel">{{ 'localization.country_label' | t }}</h2>
-                {%- render 'country-localization', localPosition: 'FooterCountry' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%}
+    <div class="footer__content-bottom-wrapper page-width content-inner">
+      <div class="jm-footer__meta">
+        <div class="footer__column footer__localization isolate jm-footer__localization">
+          {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+            <localization-form>
+              {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+                <div>
+                  <h2 class="caption-large text-body" id="FooterCountryLabel">
+                    {{ 'localization.country_label' | t }}
+                  </h2>
+                  {%- render 'country-localization', localPosition: 'FooterCountry' -%}
+                </div>
+              {%- endform -%}
+            </localization-form>
+          {%- endif -%}
+        </div>
 
-        {% comment %} {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-          <localization-form>
-            {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="caption-large text-body" id="FooterLanguageLabel">
-                  {{ 'localization.language_label' | t }}
-                </h2>
-                {%- render 'language-localization', localPosition: 'FooterLanguage' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%} {% endcomment %}
+        <div class="footer__column footer__column--info jm-footer__payment-wrap">
+          {%- if section.settings.payment_enable -%}
+            <div class="footer__payment jm-footer__payment">
+              <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+              <! テストでは非表示 本番は表示 >
+              {% comment %} <ul class="list list-payment" role="list">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li class="list-payment__item">
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                {%- endfor -%}
+              </ul> {% endcomment %}
 
+              <! テスト表示用 本番は削除 >
+              <ul class="list list-payment" role="list">
+                <li class="list-payment__item">{{ 'visa' | payment_type_svg_tag }}</li>
+                <li class="list-payment__item">{{ 'master' | payment_type_svg_tag }}</li>
+                <li class="list-payment__item">{{ 'american_express' | payment_type_svg_tag }}</li>
+                <li class="list-payment__item">{{ 'paypal' | payment_type_svg_tag }}</li>
+              </ul>
+              
+            </div>
+          {%- endif -%}
+        </div>
       </div>
-      <div class="footer__column footer__column--info">
-        {%- if section.settings.payment_enable -%}
-          <div class="footer__payment">
-            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+    </div>
+
+    {%- if section.settings.show_policy -%}
+      {%- assign policy_menu = linklists['footer-policy'] -%}
+      {%- if policy_menu.links.size > 0 -%}
+        <div class="footer__content-bottom-wrapper page-width content-inner">
+          <div class="jm-footer__policy-row">
+            <ul class="jm-footer__policies list-unstyled" role="list">
+              {%- for link in policy_menu.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
                 </li>
               {%- endfor -%}
             </ul>
           </div>
-        {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    <div class="footer__content-bottom-wrapper page-width content-inner">
+      <div class="jm-footer__copyright-row">
+        <small class="jm-footer__copyright">
+          {% comment %} &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url }} {% endcomment %}
+          &copy; {{ 'now' | date: '%Y' }}, EvangeNeo
+        </small>
       </div>
     </div>
-
-    {% comment %} <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-      <div class="footer__copyright caption" style="display:flex; gap:30px; margin: 0 auto;">
-        <small class="copyright__content" style="display:flex;"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
-
-        {%- if section.settings.show_policy -%}
-          <ul class="policies list-unstyled">
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
-                <li>
-                  <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                  >
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-
-        {%- if section.settings.show_policy -%}
-          {%- assign policy_menu = linklists['footer-policy'] -%}
-
-          {%- if policy_menu.links.size > 0 -%}
-            <ul class="policies list-unstyled">
-              {%- for link in policy_menu.links -%}
-                <li>
-                  <small class="copyright__content">
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                  </small>
-                </li>
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
-        {%- endif -%}
-
-      </div>
-    </div> {% endcomment %}
-
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-      <div class="footer__copyright caption" style="display:flex; gap:30px; margin: 0 auto;">
-        <small class="copyright__content" style="display:flex;"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
-        {% comment %} <small class="copyright__content">{{ powered_by_link }}</small> {% endcomment %}
-
-        {% comment %} ... shop.policies版 ... {% endcomment %}
-
-        {%- if section.settings.show_policy -%}
-          {%- assign policy_menu = linklists['footer-policy'] -%}
-
-          {%- if policy_menu.links.size > 0 -%}
-            <ul class="policies list-unstyled">
-              {%- for link in policy_menu.links -%}
-                <li>
-                  <small class="copyright__content">
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                  </small>
-                </li>
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
-        {%- endif -%}
-
-      </div>
-    </div>
-
   </div>
+
 </footer>
 
 {% schema %}
@@ -591,6 +588,21 @@
       "info": "t:sections.footer.settings.show_policy.info"
     },
     {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "range",
+      "id": "footer_logo_width",
+      "min": 80,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "label": "Footer logo width",
+      "default": 180
+    },
+    {
       "type": "inline_richtext",
       "id": "footer_heading",
       "label": "Footer heading",
@@ -612,6 +624,11 @@
       "type": "url",
       "id": "instagram_url",
       "label": "Instagram URL"
+    },
+      {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
     },
     {
       "type": "url",
