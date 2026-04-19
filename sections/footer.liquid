@@ -364,7 +364,7 @@
           {%- if section.settings.payment_enable -%}
             <div class="footer__payment jm-footer__payment">
               <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-              <! テストでは非表示 本番は表示 >
+              <!-- テストでは非表示 本番は表示 -->
               {% comment %} <ul class="list list-payment" role="list">
                 {%- for type in shop.enabled_payment_types -%}
                   <li class="list-payment__item">
@@ -373,14 +373,14 @@
                 {%- endfor -%}
               </ul> {% endcomment %}
 
-              <! テスト表示用 本番は削除 >
+              <!-- テスト表示用 本番は削除 -->
               <ul class="list list-payment" role="list">
                 <li class="list-payment__item">{{ 'visa' | payment_type_svg_tag }}</li>
                 <li class="list-payment__item">{{ 'master' | payment_type_svg_tag }}</li>
                 <li class="list-payment__item">{{ 'american_express' | payment_type_svg_tag }}</li>
                 <li class="list-payment__item">{{ 'paypal' | payment_type_svg_tag }}</li>
               </ul>
-              
+
             </div>
           {%- endif -%}
         </div>
