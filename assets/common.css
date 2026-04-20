@@ -905,6 +905,11 @@ body {
     width: 100%;
   }
 
+  .jm-popup__form,
+  .jm-popup__submit {
+    min-height: 50px;
+  }
+
   #jm-popupYes {
     min-width: 0;
     padding: 12px 20px;
@@ -912,7 +917,7 @@ body {
 
   .jm-popup__step2Layout {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 
   .jm-popup__step2Text .jm-popup__title,
@@ -921,11 +926,19 @@ body {
   }
 
   .jm-popup__step2Text .jm-popup__title {
-    padding-top: 10px;
+    padding-top: 4px;
+    font-size: 20px;
+  }
+
+  .jm-popup__step2Text .jm-popup__text {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .jm-popup__step2Text .jm-popup__btnArea {
     justify-content: center;
+    margin-top: 16px;
   }
 
   .jm-popup__step2Image {
@@ -941,7 +954,7 @@ body {
   .jm-popup__image {
     width: 100%;
     height: auto;
-    max-height: 220px;
+    max-height: 180px;
     object-fit: contain;
     object-position: center;
     border-radius: 10px;
@@ -954,7 +967,7 @@ body {
 
   .jm-popup__image,
   .jm-popup__imagePlaceholder {
-    min-height: 220px;
+    min-height: 180px;
   }
 
    /* success時は画像を非表示 */

@@ -1,8 +1,10 @@
 // alert("テスト");
 
 /* popup
-リモートでこれをコンソールに入れて、状態をリセット
-localStorage.removeItem("jmPopupRegistered")
+リセット用
+localStorage.removeItem("jmPopupRegistered");
+sessionStorage.removeItem("jmPopupSuccessSeen");
+location.reload();
 =========================== */
 document.addEventListener("DOMContentLoaded", function () {
   const popup = document.getElementById("jm-popup");
@@ -11,6 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const teaser = document.getElementById("jm-popup-teaser");
   const teaserBtn = teaser ? teaser.querySelector(".jm-popup-teaser__btn") : null;
   const teaserLabel = document.getElementById("jm-popupTeaserLabel");
+
+  const discountBoxes = document.querySelectorAll(
+    ".jm-product-discount-box, .jm-cart-discount-box"
+  );
 
   const step1 = document.getElementById("jm-popupStep1");
   const step2 = document.getElementById("jm-popupStep2");
@@ -119,6 +125,30 @@ document.addEventListener("DOMContentLoaded", function () {
     teaser.classList.remove("is-active");
   }
 
+  function showDiscountBoxes() {
+    if (!discountBoxes.length) return;
+    discountBoxes.forEach((box) => {
+      box.style.display = "";
+    });
+  }
+
+  function hideDiscountBoxes() {
+    if (!discountBoxes.length) return;
+    discountBoxes.forEach((box) => {
+      box.style.display = "none";
+    });
+  }
+
+  function syncDiscountUI() {
+    if (isRegistered()) {
+      showTeaser();
+      hideDiscountBoxes();
+    } else {
+      showTeaser();
+      showDiscountBoxes();
+    }
+  }
+
   function showStep1() {
     if (step1) step1.style.display = "block";
     if (step2) step2.style.display = "none";
@@ -159,18 +189,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const registered = isRegistered();
   const successSeen = isSuccessSeen();
 
-  // 初回成功時
   if (liquidSuccess && !registered && !successSeen) {
     markRegistered();
     markSuccessSeen();
-    showTeaser();
+    syncDiscountUI();
     openPopup();
     showSuccessView();
   } else if (registered) {
-    showTeaser();
+    syncDiscountUI();
   } else {
     clearSuccessSeen();
-    showTeaser();
+    syncDiscountUI();
 
     const allowAutoOpen = !isHomeOnly || isHome;
 
@@ -186,7 +215,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // teaserクリック
   if (teaserBtn) {
     teaserBtn.addEventListener("click", function () {
       if (isRegistered()) {
@@ -198,21 +226,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // product / cart の Get 15% OFF ボタン
   document.addEventListener("click", function (e) {
     const btn = e.target.closest(".jm-open-popup-btn");
     if (!btn) return;
 
-    if (teaserBtn) {
-      teaserBtn.click();
+    if (isRegistered()) {
+      showSuccessView();
     } else {
-      if (isRegistered()) {
-        showSuccessView();
-      } else {
-        resetPopupView();
-      }
-      openPopup();
+      resetPopupView();
     }
+    openPopup();
   });
 
   if (yesBtn) {
@@ -245,7 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // クーポンコピー
   if (discountCodeBtn) {
     discountCodeBtn.addEventListener("click", async function () {
       const code = discountCodeBtn.dataset.code || discountCodeBtn.textContent.trim();
